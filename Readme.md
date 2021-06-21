@@ -1,6 +1,6 @@
 # Playwright Pilot Project for Petsure
 
-## Playright for Java docs
+## Playwright for Java docs
 
 https://playwright.dev/java
 
