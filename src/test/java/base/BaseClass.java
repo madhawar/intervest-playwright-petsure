@@ -23,7 +23,7 @@ public class BaseClass {
 
         Page page = browser.newPage();
         page.setViewportSize( 1920, 1080);
-        page.navigate("https://webqa01.petsure.com/pet-name");
+        page.navigate("https://exaltwebuat.petsure.com/pet-name");
         petSure = new Petsure(page);
     }
 

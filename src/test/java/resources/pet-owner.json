@@ -1,0 +1,22 @@
+{
+  "petOwner": [
+    {
+      "firstname": "Madhawa",
+      "lastname": "Ratnayake",
+      "dob": "27/05/1989",
+      "countrycode": "+44",
+      "mobilenumber": "777837227",
+      "email": "madhawa@intervest.lk",
+      "password": "January*27",
+      "postcode": "NN47YB",
+      "address1": "Britannia House",
+      "address2": "Rushmills",
+      "city": "Northampton",
+      "cardholder": "Madhawa Ratnayake",
+      "cardnumber": "4 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1",
+      "cardmonth": "03",
+      "cardyear": "30",
+      "cardcvv": "737"
+    }
+  ]
+}
