@@ -1,9 +1,8 @@
 package pages;
 
 import com.microsoft.playwright.Page;
-import org.testng.Assert;
 
-public class Petsure {
+public class PetsureDog {
     private Page page;
 
     private final static String MAX_AGE = "Please enter a valid birthday";
@@ -54,7 +53,7 @@ public class Petsure {
 
     private final String continueButton = "text=Continue";
 
-    public Petsure(Page page) {
+    public PetsureDog(Page page) {
         this.page = page;
     }
 

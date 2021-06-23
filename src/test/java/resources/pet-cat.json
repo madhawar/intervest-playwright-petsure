@@ -1,9 +1,28 @@
 {
-  "petCat": [
+  "petInfo": [
     {
-      "firstname": "Madhawa",
-      "lastname": "Ratnayake"
-
+      "name": "Nicole",
+      "gender": "male",
+      "dobDay": "27",
+      "dobMonth": "05",
+      "dobYear": "1989",
+      "type": "pedigree",
+      "breed": "forest cat",
+      "neutered_spayed": "Y",
+      "microchipped": "N",
+      "donation": "10"
+    },
+    {
+      "name": "Sophie",
+      "gender": "female",
+      "dobDay": "27",
+      "dobMonth": "05",
+      "dobYear": "1989",
+      "type": "pedigree",
+      "breed": "forest cat",
+      "neutered_spayed": "Y",
+      "microchipped": "N",
+      "donation": "10"
     }
   ]
 }

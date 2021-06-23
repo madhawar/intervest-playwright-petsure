@@ -8,5 +8,6 @@ https://playwright.dev/java
 
 ````
 npx playwright codegen webqa01.petsure.com
+npx playwright codegen exaltwebuat.petsure.com
 ````
 
