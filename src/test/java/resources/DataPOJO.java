@@ -111,6 +111,11 @@ public class DataPOJO {
         return dobYear;
     }
 
+    private String animal;
+    public String getAnimal() {
+        return animal;
+    }
+
     private String type;
     public String getType() {
         return type;

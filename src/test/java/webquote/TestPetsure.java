@@ -17,7 +17,7 @@ import java.util.List;
 public class TestPetsure extends BaseClass {
     @DataProvider
     public Object[][] petInfo() throws FileNotFoundException {
-        JsonElement jsonData = new JsonParser().parse(new FileReader("src/test/java/resources/pet-common.json"));
+        JsonElement jsonData = new JsonParser().parse(new FileReader("src/test/java/resources/pet-min.json"));
         JsonElement dataSet = jsonData.getAsJsonObject().get("petCommon");
         List<DataPOJO> testData = new Gson().fromJson(dataSet, new TypeToken<List<DataPOJO>>() {}.getType());
         Object[][] returnValue = new Object[testData.size()][1];
@@ -29,7 +29,7 @@ public class TestPetsure extends BaseClass {
     }
 
     @Test(priority=1, dataProvider = "petInfo")
-    public void enterPetNameInvalid(DataPOJO petCat) {
+    public void enterPetNameInvalid(DataPOJO petInfo) {
         petSure.clickAcceptAllCookiesButton();
 
         petSure.typePetName("");
@@ -43,42 +43,52 @@ public class TestPetsure extends BaseClass {
     }
 
     @Test(priority=2, dataProvider = "petInfo")
-    public void enterPetNameValid(DataPOJO petCat) {
+    public void enterPetNameValid(DataPOJO petInfo) {
         petSure.clickAcceptAllCookiesButton();
 
-        petSure.typePetName(petCat.getName());
+        petSure.typePetName(petInfo.getName());
         petSure.clickContinueButton();
     }
 
     @Test(priority=3, dataProvider = "petInfo")
-    public void enterPetGender(DataPOJO petCat) {
+    public void enterPetGender(DataPOJO petInfo) {
         petSure.clickAcceptAllCookiesButton();
-        petSure.typePetName(petCat.getName());
+        petSure.typePetName(petInfo.getName());
         petSure.clickContinueButton();
 
-        petSure.selectCat();
+        if (petInfo.getAnimal().equals("cat")) {
+            petSure.selectCat();
+        }
+        else if (petInfo.getAnimal().equals("dog")) {
+            petSure.selectDog();
+        }
         petSure.clickContinueButton();
 
-        if (petCat.getGender().equals("male")) {
+        if (petInfo.getGender().equals("male")) {
             petSure.selectMale();
         }
-        else if (petCat.getGender().equals("female")) {
+        else if (petInfo.getGender().equals("female")) {
             petSure.selectFemale();
         }
     }
 
     @Test(priority=4, dataProvider = "petInfo")
-    public void enterPetBirthdayAgeMin(DataPOJO petCat) {
+    public void enterPetBirthdayAgeMin(DataPOJO petInfo) {
         petSure.clickAcceptAllCookiesButton();
-        petSure.typePetName(petCat.getName());
+        petSure.typePetName(petInfo.getName());
         petSure.clickContinueButton();
 
-        petSure.selectCat();
+        if (petInfo.getAnimal().equals("cat")) {
+            petSure.selectCat();
+        }
+        else if (petInfo.getAnimal().equals("dog")) {
+            petSure.selectDog();
+        }
         petSure.clickContinueButton();
 
-        if (petCat.getGender().equals("male")) {
+        if (petInfo.getGender().equals("male")) {
             petSure.selectMale();
-        } else if (petCat.getGender().equals("female")) {
+        } else if (petInfo.getGender().equals("female")) {
             petSure.selectFemale();
         }
 
@@ -94,22 +104,27 @@ public class TestPetsure extends BaseClass {
         String birthday = Integer.toString(currentDay);
 
         petSure.enterBirthday(birthday, birthmonth, birthyear);
-        petSure.verifyMinAge(petCat.getName());
+        petSure.verifyMinAge(petInfo.getName());
     }
 
     @Test(priority=5, dataProvider = "petInfo")
-    public void enterPetBirthdayAgeMax(DataPOJO petCat) {
+    public void enterPetBirthdayAgeMax(DataPOJO petInfo) {
         petSure.clickAcceptAllCookiesButton();
-        petSure.typePetName(petCat.getName());
+        petSure.typePetName(petInfo.getName());
         petSure.clickContinueButton();
 
-        petSure.selectCat();
+        if (petInfo.getAnimal().equals("cat")) {
+            petSure.selectCat();
+        }
+        else if (petInfo.getAnimal().equals("dog")) {
+            petSure.selectDog();
+        }
         petSure.clickContinueButton();
 
-        if (petCat.getGender().equals("male")) {
+        if (petInfo.getGender().equals("male")) {
             petSure.selectMale();
         }
-        else if (petCat.getGender().equals("female")) {
+        else if (petInfo.getGender().equals("female")) {
             petSure.selectFemale();
         }
 
@@ -118,27 +133,31 @@ public class TestPetsure extends BaseClass {
         int maxAge = currentdate.getYear() - 50;
         String birthyear = Integer.toString(maxAge);
 
-        petSure.enterBirthday(petCat.getBirthDay(), petCat.getBirthMonth(), birthyear);
+        petSure.enterBirthday(petInfo.getBirthDay(), petInfo.getBirthMonth(), birthyear);
         petSure.verifyMaxAge();
     }
 
     @Test(priority=6, dataProvider = "petInfo")
-    public void enterPetBirthday(DataPOJO petCat) {
+    public void enterPetBirthday(DataPOJO petInfo) {
         petSure.clickAcceptAllCookiesButton();
-        petSure.typePetName(petCat.getName());
+        petSure.typePetName(petInfo.getName());
         petSure.clickContinueButton();
 
-        petSure.selectCat();
+        if (petInfo.getAnimal().equals("cat")) {
+            petSure.selectCat();
+        }
+        else if (petInfo.getAnimal().equals("dog")) {
+            petSure.selectDog();
+        }
         petSure.clickContinueButton();
 
-        if (petCat.getGender().equals("male")) {
+        if (petInfo.getGender().equals("male")) {
             petSure.selectMale();
         }
-        else if (petCat.getGender().equals("female")) {
+        else if (petInfo.getGender().equals("female")) {
             petSure.selectFemale();
         }
-
-        petSure.enterBirthday(petCat.getBirthDay(), petCat.getBirthMonth(), petCat.getBirthYear());
+        petSure.enterBirthday(petInfo.getBirthDay(), petInfo.getBirthMonth(), petInfo.getBirthYear());
         petSure.clickContinueButton();
     }
 

@@ -31,38 +31,6 @@
       "cardmonth": "03",
       "cardyear": "30",
       "cardcvv": "737"
-    },
-    {
-      "animal": "dog",
-      "name": "sophie",
-      "gender": "female",
-      "dobDay": "27",
-      "dobMonth": "05",
-      "dobYear": "1989",
-      "type": "Pedigree",
-      "breed": "forest cat",
-      "dominant_breed": "forest cat",
-      "neutered_spayed": "Y",
-      "microchipped": "N",
-      "donation": "10",
-
-      "firstname": "Madhawa",
-      "lastname": "Ratnayake",
-      "dob": "27/05/1989",
-      "countrycode": "+44",
-      "mobilenumber": "777837227",
-      "email": "madhawa@intervest.lk",
-      "password": "January*27",
-      "postcode": "NN47YB",
-      "address1": "Britannia House",
-      "address2": "Rushmills",
-      "city": "Northampton",
-      "country": "United Kingdom",
-      "cardholder": "Madhawa Ratnayake",
-      "cardnumber": "4 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1",
-      "cardmonth": "03",
-      "cardyear": "30",
-      "cardcvv": "737"
     }
   ]
 }
