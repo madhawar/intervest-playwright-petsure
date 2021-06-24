@@ -1,10 +1,10 @@
-# Playwright Pilot Project for Petsure
+# 🎭 Playwright Pilot Project for Petsure
 
 ## Playwright for Java docs
 
 https://playwright.dev/java
 
-### Playwright Inspector
+## Playwright Inspector
 
 ````
 npx playwright codegen webqa01.petsure.com
