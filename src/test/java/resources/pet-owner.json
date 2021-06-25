@@ -1,19 +1,6 @@
 {
-  "petCommon": [
+  "petOwner": [
     {
-      "animal": "cat",
-      "name": "nicole",
-      "gender": "male",
-      "dobDay": "27",
-      "dobMonth": "05",
-      "dobYear": "1989",
-      "type": "Pedigree",
-      "breed": "forest cat",
-      "dominant_breed": "forest cat",
-      "neutered_spayed": "Y",
-      "microchipped": "N",
-      "donation": "10",
-
       "firstname": "Madhawa",
       "lastname": "Ratnayake",
       "dob": "27/05/1989",

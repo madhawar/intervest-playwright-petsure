@@ -145,4 +145,9 @@ public class DataPOJO {
     public String getDonation() {
         return donation;
     }
+
+    private String dental_illness;
+    public String getDentalIllness() {
+        return dental_illness;
+    }
 }

@@ -1,30 +1,20 @@
 {
-  "petInfo": [
+  "petDog": [
     {
-      "name": "Madhawa",
-      "gender": "male",
+      "animal": "dog",
+      "name": "riley",
+      "gender": "female",
       "dobDay": "27",
       "dobMonth": "05",
       "dobYear": "1989",
-      "type": "Pedigree",
-      "breed": "forest cat",
-      "dominant_breed": "forest cat",
-      "neutered_spayed": "Y",
-      "microchipped": "N",
-      "donation": "10"
-    },
-    {
-      "name": "Madhawa",
-      "gender": "male",
-      "dobDay": "27",
-      "dobMonth": "05",
-      "dobYear": "1989",
-      "type": "Pedigree",
-      "breed": "forest cat",
-      "dominant_breed": "forest cat",
-      "neutered_spayed": "Y",
-      "microchipped": "N",
-      "donation": "10"
+      "type": "cross",
+      "breed": "German Shepherd",
+      "dominant_breed": "Labrador",
+      "neutered_spayed": "yes",
+      "microchipped": "no",
+      "donation": "10",
+
+
     }
   ]
 }
