@@ -72,4 +72,45 @@ public class TestPolicyDetails extends BaseClass {
         petSure.clickContinueButton();
     }
 
+    @Test(priority=2, dataProvider = "petInfo")
+    public void test(DataPOJO petInfo) {
+        petSure.clickAcceptAllCookiesButton();
+        petSure.typePetName(petInfo.getName());
+        petSure.clickContinueButton();
+
+        petSure.selectPetType(petInfo.getAnimal());
+        petSure.clickContinueButton();
+
+        petSure.selectPetGender(petInfo.getGender());
+        petSure.enterBirthday(petInfo.getBirthDay(), petInfo.getBirthMonth(), petInfo.getBirthYear());
+        petSure.clickContinueButton();
+
+        petSure.selectBreed(petInfo.getAnimal(), petInfo.getType(), petInfo.getBreed(), petInfo.getDominantBreed());
+        petSure.clickContinueButton();
+
+        petSure.answerNeuteredOrSpayedQuestion(petInfo.getNeuteredSpayed());
+        petSure.answerMicrochipQuestion(petInfo.getMicrochipped());
+
+        petSure.costPaidOrDonated(petInfo.getDonation());
+        petSure.clickContinueButton();
+
+        petSure.dentalIllnessCover(petInfo.getDentalIllness());
+        petSure.clickContinueButton();
+
+        petSure.healthCover(petInfo.getHealthQuestion1(), petInfo.getHealthQuestion2(), petInfo.getAnimal());
+
+        petSure.agreeToAssumptions();
+        petSure.clickContinueButton();
+
+        policyDetails.selectNoForAnyOtherPets();
+        petSure.clickContinueButton();
+
+        policyDetails.selectPolicyStartDate();
+        petSure.clickContinueButton();
+
+        policyDetails.fillOwnerDetails();
+        policyDetails.selectCommunicationPreferences();
+        petSure.clickContinueButton();
+    }
+
 }

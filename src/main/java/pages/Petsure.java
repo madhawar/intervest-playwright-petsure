@@ -90,8 +90,7 @@ public class Petsure {
     private final String okayGotItButton = "#confirm";
     private final String okayGotItMedicalButton = "#medicalWarningDismiss";
 
-    private final String submitButton = "text=Continue";
-    private final String continueButton = "#submit";
+    private final String continueButton = "text=Continue";
 
     public Petsure(Page page) {
         this.page = page;

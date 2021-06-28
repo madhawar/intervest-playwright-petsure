@@ -3,7 +3,9 @@
     {
       "firstname": "Madhawa",
       "lastname": "Ratnayake",
-      "dob": "27/05/1989",
+      "bDay": "27",
+      "bMonth": "05",
+      "bYear": "1989",
       "countrycode": "+44",
       "mobilenumber": "777837227",
       "email": "madhawa@intervest.lk",

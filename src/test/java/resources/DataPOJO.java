@@ -11,9 +11,19 @@ public class DataPOJO {
         return lastname;
     }
 
-    private String dob;
-    public String getDob() {
-        return dob;
+    private String bDay;
+    public String getOwnerBDay() {
+        return bDay;
+    }
+
+    private String bMonth;
+    public String getOwnerBMonth() {
+        return bMonth;
+    }
+
+    private String bYear;
+    public String getOwnerBYear() {
+        return bYear;
     }
 
     private String countrycode;
