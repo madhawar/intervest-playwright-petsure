@@ -71,15 +71,24 @@ public class Petsure {
     private final String neuteredOrSpayedYes = "//label[@for='yes']";
     private final String neuteredOrSpayedNo = "//label[@for='no']";
 
+    private final String microchippedYes = "//label[@for='isMicroChipped-yes']";
+    private final String microchippedNo = "//label[@for='isMicroChipped-no']";
+
     private final String dentalIllnessYes = "//label[@for='yes']";
     private final String dentalIllnessNo = "//label[@for='no']";
 
-    private final String microchippedYes = "//label[@for='isMicroChipped-yes']";
-    private final String microchippedNo = "//label[@for='isMicroChipped-no']";
+    private final String healthCheckQuestionYes = "//label[@for='yes']";
+    private final String healthCheckQuestionNo = "//label[@for='no']";
+
+    private final String assumptionsYes = "text=Yes, I agree";
+    private final String assumptionsNo = "No, I don't agree";
+
+    private final String iFrameHealth = "#healthFrame";
 
     private final String petCost = "#petCost";
 
     private final String okayGotItButton = "#confirm";
+    private final String okayGotItMedicalButton = "#medicalWarningDismiss";
 
     private final String submitButton = "text=Continue";
     private final String continueButton = "#submit";
@@ -102,6 +111,10 @@ public class Petsure {
         });
     }
 
+    public void clickContinueButtonWithoutAwait() {
+        page.click(continueButton);
+    }
+
     public void verifyContinueButtonRemainsHidden() {
         page.waitForNavigation(() -> {
             boolean continueButtonDisplayed = page.isVisible(continueButton);
@@ -109,16 +122,21 @@ public class Petsure {
         });
     }
 
-    public void clickContinueButtonWithoutAwait() {
-        page.click(continueButton);
-    }
-
     public void clickOkayGotItButton() {
+        page.click(continueButton);
+
         page.waitForNavigation(() -> {
             page.click(okayGotItButton);
         });
     }
 
+    public void dismissMedicalWarning() {
+        page.click(continueButton);
+
+        page.waitForNavigation(() -> {
+            page.click(okayGotItMedicalButton);
+        });
+    }
     public void typePetName(String pet) {
         page.fill(petName, pet);
         page.press(petName, "Tab");
@@ -295,5 +313,80 @@ public class Petsure {
                 break;
         }
     }
+
+    public void healthCoverQuestion(String health_check) {
+        switch (health_check) {
+            case "yes":
+                page.click(healthCheckQuestionYes);
+                break;
+            case "no":
+                page.click(healthCheckQuestionNo);
+                break;
+        }
+    }
+
+    public void addStockMedicalConditionForCat() {
+        // Click text=Continue
+        // page.click("text=Continue");
+        // Click input[name="conditionsearch"]
+        page.frame(iFrameHealth).click("input[name=\"conditionsearch\"]");
+        // Fill input[name="conditionsearch"]
+        page.frame(iFrameHealth).fill("input[name=\"conditionsearch\"]", "tick");
+        // Click input:has-text("Search")
+        page.frame(iFrameHealth).click("input:has-text(\"Search\")");
+        // Click button[role="button"]:has-text("Select")
+        page.frame(iFrameHealth).click("button[role=\"button\"]:has-text(\"Select\")");
+        // Click :nth-match(input[name="answerNum"], 2)
+        page.frame(iFrameHealth).click(":nth-match(input[name=\"answerNum\"], 2)");
+        // Click :nth-match(input[name="answerNum"], 2)
+        page.frame(iFrameHealth).click(":nth-match(input[name=\"answerNum\"], 2)");
+        // Click text=Continue
+        page.frame(iFrameHealth).click("text=Continue");
+        // Click button:has-text("Finish")
+        // page.waitForNavigation(new Page.WaitForNavigationOptions().setUrl("https://exaltwebuat.petsure.com/verisk-summary?quoteReference=Bk5vpmJSPRHS2Pb4ufkrlg%3D%3D&personReference=j8B6NvoYBzzEg%2FJxSZfTXw%3D%3D&propertyReference=B1RuVz61uJqPBytHwYxz6w%3D%3D&hashCode=a44abc0a2ac6275f604851f6b04d6cff"), () ->
+        page.waitForNavigation(() -> {
+            page.frame(iFrameHealth).click("button:has-text(\"Finish\")");
+        });
+        // Click text=Continue
+        page.click("text=Continue");
+        // assert page.url().equals("https://exaltwebuat.petsure.com/pet-assumption?quoteReference=Bk5vpmJSPRHS2Pb4ufkrlg%3D%3D&personReference=j8B6NvoYBzzEg%2FJxSZfTXw%3D%3D&propertyReference=B1RuVz61uJqPBytHwYxz6w%3D%3D");
+    }
+
+    public void addStockMedicalConditionForDog() {
+        // Click text=Continue
+        // page.click("text=Continue");
+        // Click input[name="conditionsearch"]
+        page.frame(iFrameHealth).click("input[name=\"conditionsearch\"]");
+        // Fill input[name="conditionsearch"]
+        page.frame(iFrameHealth).fill("input[name=\"conditionsearch\"]", "tick");
+        // Click input:has-text("Search")
+        page.frame(iFrameHealth).click("input:has-text(\"Search\")");
+        // Click text=Ticks (canine) Select >> button[role="button"]
+        page.frame(iFrameHealth).click("text=Ticks (canine) Select >> button[role=\"button\"]");
+        // Click input[name="answerNum"]
+        page.frame(iFrameHealth).click("input[name=\"answerNum\"]");
+        // Click :nth-match(input[name="answerNum"], 2)
+        page.frame(iFrameHealth).click(":nth-match(input[name=\"answerNum\"], 2)");
+        // Click text=Continue
+        page.frame(iFrameHealth).click("text=Continue");
+        // Click button:has-text("Finish")
+        // page.waitForNavigation(new Page.WaitForNavigationOptions().setUrl("https://exaltwebuat.petsure.com/verisk-summary?quoteReference=NQICpEEFnGSqajYwVI6%2Blg%3D%3D&personReference=N5Fw8QBKn7%2B0P%2Fe8Jwd%2Fnw%3D%3D&propertyReference=es7T2jeNwOkZJVRWlIWnhg%3D%3D&hashCode=8607b6237274d57e1d56b8ca88127d35"), () ->
+        page.waitForNavigation(() -> {
+            page.frame(iFrameHealth).click("button:has-text(\"Finish\")");
+        });
+        // Click text=Continue
+        page.click("text=Continue");
+        // assert page.url().equals("https://exaltwebuat.petsure.com/pet-assumption?quoteReference=NQICpEEFnGSqajYwVI6%2Blg%3D%3D&personReference=N5Fw8QBKn7%2B0P%2Fe8Jwd%2Fnw%3D%3D&propertyReference=es7T2jeNwOkZJVRWlIWnhg%3D%3D");
+    }
+
+    public void agreeToAssumptions() {
+        page.click(assumptionsYes);
+    }
+
+    public void disagreeToAssumptions() {
+        page.click(assumptionsNo);
+    }
+
+
 
 }

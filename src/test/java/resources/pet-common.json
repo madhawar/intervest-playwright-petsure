@@ -34,7 +34,9 @@
       "neutered_spayed": "no",
       "microchipped": "no",
       "donation": "10",
-      "dental_illness": "yes"
+      "dental_illness": "yes",
+      "visited_vet_prescribed_medication": "yes",
+      "awaiting_surgery": "yes"
     },
     {
       "animal": "cat",
@@ -49,7 +51,9 @@
       "neutered_spayed": "yes",
       "microchipped": "yes",
       "donation": "10",
-      "dental_illness": "no"
+      "dental_illness": "no",
+      "visited_vet_prescribed_medication": "no",
+      "awaiting_surgery": "yes"
     }
   ],
   "petDog": [

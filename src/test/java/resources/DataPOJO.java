@@ -150,4 +150,15 @@ public class DataPOJO {
     public String getDentalIllness() {
         return dental_illness;
     }
+
+    private String visited_vet_prescribed_medication;
+    public String getHealthQuestion1() {
+        return visited_vet_prescribed_medication;
+    }
+
+    private String awaiting_surgery;
+    public String getHealthQuestion2() {
+        return awaiting_surgery;
+    }
+
 }

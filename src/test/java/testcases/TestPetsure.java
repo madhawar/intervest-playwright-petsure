@@ -225,7 +225,6 @@ public class TestPetsure extends BaseClass {
 
         petSure.answerNeuteredOrSpayedQuestion(petInfo.getNeuteredSpayed());
         petSure.answerMicrochipQuestion("no");
-        petSure.clickContinueButtonWithoutAwait();
         petSure.clickOkayGotItButton();
     }
 
@@ -252,7 +251,6 @@ public class TestPetsure extends BaseClass {
         petSure.answerNeuteredOrSpayedQuestion(petInfo.getNeuteredSpayed());
         if (petInfo.getMicrochipped().equals("no")) {
             petSure.answerMicrochipQuestion(petInfo.getMicrochipped());
-            petSure.clickContinueButtonWithoutAwait();
             petSure.clickOkayGotItButton();
         }
         else {
@@ -287,7 +285,6 @@ public class TestPetsure extends BaseClass {
         petSure.answerNeuteredOrSpayedQuestion(petInfo.getNeuteredSpayed());
         if (petInfo.getMicrochipped().equals("no")) {
             petSure.answerMicrochipQuestion(petInfo.getMicrochipped());
-            petSure.clickContinueButtonWithoutAwait();
             petSure.clickOkayGotItButton();
         }
         else {
@@ -300,6 +297,37 @@ public class TestPetsure extends BaseClass {
 
         petSure.dentalIllnessCover(petInfo.getDentalIllness());
         petSure.clickContinueButton();
+
+        if (petInfo.getHealthQuestion1().equals("no")) {
+            petSure.healthCoverQuestion(petInfo.getHealthQuestion1());
+            petSure.clickContinueButton();
+        }
+        else if (petInfo.getHealthQuestion1().equals("yes")){
+            if (petInfo.getHealthQuestion2().equals("yes")) {
+                petSure.healthCoverQuestion(petInfo.getHealthQuestion1());
+                petSure.clickContinueButton();
+
+                petSure.healthCoverQuestion(petInfo.getHealthQuestion2());
+                petSure.dismissMedicalWarning();
+            }
+            else if (petInfo.getHealthQuestion2().equals("no")) {
+                petSure.healthCoverQuestion(petInfo.getHealthQuestion1());
+                petSure.clickContinueButton();
+
+                petSure.healthCoverQuestion(petInfo.getHealthQuestion2());
+                petSure.clickContinueButton();
+
+                if (petInfo.getAnimal().equals("cat")) {
+                    petSure.addStockMedicalConditionForCat();
+                } else if (petInfo.getAnimal().equals("dog")) {
+                    petSure.addStockMedicalConditionForDog();
+                }
+            }
+        }
+
+        petSure.agreeToAssumptions();
+        petSure.clickContinueButton();
+
     }
 
 
