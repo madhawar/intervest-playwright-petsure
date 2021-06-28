@@ -35,8 +35,8 @@
       "microchipped": "no",
       "donation": "10",
       "dental_illness": "yes",
-      "visited_vet_prescribed_medication": "yes",
-      "awaiting_surgery": "yes"
+      "visited_vet_prescribed_medication": "no",
+      "awaiting_surgery": "no"
     },
     {
       "animal": "cat",

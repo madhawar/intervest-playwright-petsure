@@ -6,7 +6,7 @@ import org.testng.Assert;
 import java.util.Random;
 
 public class Petsure {
-    private Page page;
+    private final Page page;
 
     private final static String MAX_AGE = "Please enter a valid birthday";
     private final static String MIN_AGE = " must be at least 4 weeks old";
@@ -111,10 +111,6 @@ public class Petsure {
         });
     }
 
-    public void clickContinueButtonWithoutAwait() {
-        page.click(continueButton);
-    }
-
     public void verifyContinueButtonRemainsHidden() {
         page.waitForNavigation(() -> {
             boolean continueButtonDisplayed = page.isVisible(continueButton);
@@ -122,21 +118,6 @@ public class Petsure {
         });
     }
 
-    public void clickOkayGotItButton() {
-        page.click(continueButton);
-
-        page.waitForNavigation(() -> {
-            page.click(okayGotItButton);
-        });
-    }
-
-    public void dismissMedicalWarning() {
-        page.click(continueButton);
-
-        page.waitForNavigation(() -> {
-            page.click(okayGotItMedicalButton);
-        });
-    }
     public void typePetName(String pet) {
         page.fill(petName, pet);
         page.press(petName, "Tab");
@@ -191,51 +172,52 @@ public class Petsure {
         }
     }
 
-    public void selectCatType(String type, String breed) {
-        switch (type) {
-            case "moggie":
-                page.click(typeMoggie);
-                break;
-            case "pedigree":
-                page.click(typePedigree);
+    public void selectBreed(String animal, String type, String breed, String dominant_breed) {
+        if (animal.equals("cat")) {
+            switch (type) {
+                case "moggie":
+                    page.click(typeMoggie);
+                    break;
+                case "pedigree":
+                    page.click(typePedigree);
 
-                page.fill(breedSearchBox, breed);
-                page.click(breedSearchBox);
-                page.click(breedPureSearchList_1 + breed + breedPureSearchList_2);
-                break;
-            case "other":
-                page.click(typeOther);
+                    page.fill(breedSearchBox, breed);
+                    page.click(breedSearchBox);
+                    page.click(breedPureSearchList_1 + breed + breedPureSearchList_2);
+                    break;
+                case "other":
+                    page.click(typeOther);
 
-                page.fill(breedSearchBox, breed);
-                page.click(breedSearchBox);
-                page.click(breedPureSearchList_1 + breed + breedPureSearchList_2);
-                break;
+                    page.fill(breedSearchBox, breed);
+                    page.click(breedSearchBox);
+                    page.click(breedPureSearchList_1 + breed + breedPureSearchList_2);
+                    break;
+            }
         }
-    }
+        else if (animal.equals("dog")) {
+            switch (type) {
+                case "pedigree":
+                    page.click(typePedigree);
 
-    public void selectDogType(String type, String breed, String dominant_breed) {
-        switch (type) {
-            case "pedigree":
-                page.click(typePedigree);
+                    page.fill(breedSearchBox, breed);
+                    page.click(breedSearchBox);
+                    page.click(breedPureSearchList_1 + breed + breedPureSearchList_2);
+                    break;
+                case "cross":
+                    page.click(typeCrossBreed);
 
-                page.fill(breedSearchBox, breed);
-                page.click(breedSearchBox);
-                page.click(breedPureSearchList_1 + breed + breedPureSearchList_2);
-                break;
-            case "cross":
-                page.click(typeCrossBreed);
+                    page.fill(breedCrossSearchBox, dominant_breed);
+                    page.click(breedCrossSearchBox);
+                    page.click(breedCrossSearchList_1 + dominant_breed + breedCrossSearchList_2);
+                    break;
+                case "mixed":
+                    page.click(typeMixedBreed);
 
-                page.fill(breedCrossSearchBox, dominant_breed);
-                page.click(breedCrossSearchBox);
-                page.click(breedCrossSearchList_1 + dominant_breed + breedCrossSearchList_2);
-                break;
-            case "mixed":
-                page.click(typeMixedBreed);
-
-                page.fill(breedMixedDominantSearchBox, dominant_breed);
-                page.click(breedMixedDominantSearchBox);
-                page.click(breedPureSearchList_1 + dominant_breed + breedPureSearchList_2);
-                break;
+                    page.fill(breedMixedDominantSearchBox, dominant_breed);
+                    page.click(breedMixedDominantSearchBox);
+                    page.click(breedPureSearchList_1 + dominant_breed + breedPureSearchList_2);
+                    break;
+            }
         }
     }
 
@@ -292,9 +274,17 @@ public class Petsure {
         switch (microchipped) {
             case "yes":
                 page.click(microchippedYes);
+                page.waitForNavigation(() -> {
+                    page.click(continueButton);
+                });
                 break;
             case "no":
                 page.click(microchippedNo);
+                page.click(continueButton);
+
+                page.waitForNavigation(() -> {
+                    page.click(okayGotItButton);
+                });
                 break;
         }
     }
@@ -314,69 +304,84 @@ public class Petsure {
         }
     }
 
-    public void healthCoverQuestion(String health_check) {
-        switch (health_check) {
-            case "yes":
-                page.click(healthCheckQuestionYes);
-                break;
-            case "no":
-                page.click(healthCheckQuestionNo);
-                break;
+    public void healthCover(String visited_vet_prescribed_medication, String awaiting_surgery, String animal) {
+        if (visited_vet_prescribed_medication.equals("no")) {
+            page.click(healthCheckQuestionNo);
+            page.waitForNavigation(() -> {
+                 page.click(continueButton);
+            });
         }
-    }
+        else if (visited_vet_prescribed_medication.equals("yes")){
+            if (awaiting_surgery.equals("yes")) {
+                page.click(healthCheckQuestionYes);
+                page.waitForNavigation(() -> {
+                    page.click(continueButton);
+                });
 
-    public void addStockMedicalConditionForCat() {
-        // Click text=Continue
-        // page.click("text=Continue");
-        // Click input[name="conditionsearch"]
-        page.frame(iFrameHealth).click("input[name=\"conditionsearch\"]");
-        // Fill input[name="conditionsearch"]
-        page.frame(iFrameHealth).fill("input[name=\"conditionsearch\"]", "tick");
-        // Click input:has-text("Search")
-        page.frame(iFrameHealth).click("input:has-text(\"Search\")");
-        // Click button[role="button"]:has-text("Select")
-        page.frame(iFrameHealth).click("button[role=\"button\"]:has-text(\"Select\")");
-        // Click :nth-match(input[name="answerNum"], 2)
-        page.frame(iFrameHealth).click(":nth-match(input[name=\"answerNum\"], 2)");
-        // Click :nth-match(input[name="answerNum"], 2)
-        page.frame(iFrameHealth).click(":nth-match(input[name=\"answerNum\"], 2)");
-        // Click text=Continue
-        page.frame(iFrameHealth).click("text=Continue");
-        // Click button:has-text("Finish")
-        // page.waitForNavigation(new Page.WaitForNavigationOptions().setUrl("https://exaltwebuat.petsure.com/verisk-summary?quoteReference=Bk5vpmJSPRHS2Pb4ufkrlg%3D%3D&personReference=j8B6NvoYBzzEg%2FJxSZfTXw%3D%3D&propertyReference=B1RuVz61uJqPBytHwYxz6w%3D%3D&hashCode=a44abc0a2ac6275f604851f6b04d6cff"), () ->
-        page.waitForNavigation(() -> {
-            page.frame(iFrameHealth).click("button:has-text(\"Finish\")");
-        });
-        // Click text=Continue
-        page.click("text=Continue");
-        // assert page.url().equals("https://exaltwebuat.petsure.com/pet-assumption?quoteReference=Bk5vpmJSPRHS2Pb4ufkrlg%3D%3D&personReference=j8B6NvoYBzzEg%2FJxSZfTXw%3D%3D&propertyReference=B1RuVz61uJqPBytHwYxz6w%3D%3D");
-    }
+                page.click(healthCheckQuestionYes);
+                page.click(continueButton);
+                page.waitForNavigation(() -> {
+                    page.click(okayGotItMedicalButton);
+                });
+            }
+            else if (awaiting_surgery.equals("no")) {
+                page.click(healthCheckQuestionYes);
+                page.waitForNavigation(() -> {
+                    page.click(continueButton);
+                });
 
-    public void addStockMedicalConditionForDog() {
-        // Click text=Continue
-        // page.click("text=Continue");
-        // Click input[name="conditionsearch"]
-        page.frame(iFrameHealth).click("input[name=\"conditionsearch\"]");
-        // Fill input[name="conditionsearch"]
-        page.frame(iFrameHealth).fill("input[name=\"conditionsearch\"]", "tick");
-        // Click input:has-text("Search")
-        page.frame(iFrameHealth).click("input:has-text(\"Search\")");
-        // Click text=Ticks (canine) Select >> button[role="button"]
-        page.frame(iFrameHealth).click("text=Ticks (canine) Select >> button[role=\"button\"]");
-        // Click input[name="answerNum"]
-        page.frame(iFrameHealth).click("input[name=\"answerNum\"]");
-        // Click :nth-match(input[name="answerNum"], 2)
-        page.frame(iFrameHealth).click(":nth-match(input[name=\"answerNum\"], 2)");
-        // Click text=Continue
-        page.frame(iFrameHealth).click("text=Continue");
-        // Click button:has-text("Finish")
-        // page.waitForNavigation(new Page.WaitForNavigationOptions().setUrl("https://exaltwebuat.petsure.com/verisk-summary?quoteReference=NQICpEEFnGSqajYwVI6%2Blg%3D%3D&personReference=N5Fw8QBKn7%2B0P%2Fe8Jwd%2Fnw%3D%3D&propertyReference=es7T2jeNwOkZJVRWlIWnhg%3D%3D&hashCode=8607b6237274d57e1d56b8ca88127d35"), () ->
-        page.waitForNavigation(() -> {
-            page.frame(iFrameHealth).click("button:has-text(\"Finish\")");
-        });
-        // Click text=Continue
-        page.click("text=Continue");
-        // assert page.url().equals("https://exaltwebuat.petsure.com/pet-assumption?quoteReference=NQICpEEFnGSqajYwVI6%2Blg%3D%3D&personReference=N5Fw8QBKn7%2B0P%2Fe8Jwd%2Fnw%3D%3D&propertyReference=es7T2jeNwOkZJVRWlIWnhg%3D%3D");
+                page.click(healthCheckQuestionNo);
+                page.waitForNavigation(() -> {
+                    page.click(continueButton);
+                });
+
+                if (animal.equals("cat")) {
+                    // page.click("text=Continue");
+
+                    page.frame(iFrameHealth).click("input[name=\"conditionsearch\"]");
+
+                    page.frame(iFrameHealth).fill("input[name=\"conditionsearch\"]", "tick");
+
+                    page.frame(iFrameHealth).click("input:has-text(\"Search\")");
+
+                    page.frame(iFrameHealth).click("button[role=\"button\"]:has-text(\"Select\")");
+
+                    page.frame(iFrameHealth).click(":nth-match(input[name=\"answerNum\"], 2)");
+
+                    page.frame(iFrameHealth).click(":nth-match(input[name=\"answerNum\"], 2)");
+
+                    page.frame(iFrameHealth).click("text=Continue");
+
+                    page.waitForNavigation(() -> {
+                        page.frame(iFrameHealth).click("button:has-text(\"Finish\")");
+                    });
+
+                    page.click("text=Continue");
+                } else if (animal.equals("dog")) {
+                    // page.click("text=Continue");
+
+                    page.frame(iFrameHealth).click("input[name=\"conditionsearch\"]");
+
+                    page.frame(iFrameHealth).fill("input[name=\"conditionsearch\"]", "tick");
+
+                    page.frame(iFrameHealth).click("input:has-text(\"Search\")");
+
+                    page.frame(iFrameHealth).click("text=Ticks (canine) Select >> button[role=\"button\"]");
+
+                    page.frame(iFrameHealth).click("input[name=\"answerNum\"]");
+
+                    page.frame(iFrameHealth).click(":nth-match(input[name=\"answerNum\"], 2)");
+
+                    page.frame(iFrameHealth).click("text=Continue");
+
+                    page.waitForNavigation(() -> {
+                        page.frame(iFrameHealth).click("button:has-text(\"Finish\")");
+                    });
+
+                    page.click("text=Continue");
+                }
+            }
+        }
     }
 
     public void agreeToAssumptions() {
@@ -386,7 +391,5 @@ public class Petsure {
     public void disagreeToAssumptions() {
         page.click(assumptionsNo);
     }
-
-
 
 }

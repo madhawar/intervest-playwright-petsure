@@ -161,11 +161,7 @@ public class TestPetsure extends BaseClass {
         petSure.enterBirthday(petInfo.getBirthDay(), petInfo.getBirthMonth(), petInfo.getBirthYear());
         petSure.clickContinueButton();
 
-        if (petInfo.getAnimal().equals("cat")) {
-            petSure.selectCatType(petInfo.getType(), petInfo.getBreed());
-        } else if (petInfo.getAnimal().equals("dog")) {
-            petSure.selectDogType(petInfo.getType(), petInfo.getBreed(), petInfo.getDominantBreed());
-        }
+        petSure.selectBreed(petInfo.getAnimal(), petInfo.getType(), petInfo.getBreed(), petInfo.getDominantBreed());
         petSure.clickContinueButton();
     }
 
@@ -216,16 +212,11 @@ public class TestPetsure extends BaseClass {
         petSure.enterBirthday(petInfo.getBirthDay(), petInfo.getBirthMonth(), petInfo.getBirthYear());
         petSure.clickContinueButton();
 
-        if (petInfo.getAnimal().equals("cat")) {
-            petSure.selectCatType(petInfo.getType(), petInfo.getBreed());
-        } else if (petInfo.getAnimal().equals("dog")) {
-            petSure.selectDogType(petInfo.getType(), petInfo.getBreed(), petInfo.getDominantBreed());
-        }
+        petSure.selectBreed(petInfo.getAnimal(), petInfo.getType(), petInfo.getBreed(), petInfo.getDominantBreed());
         petSure.clickContinueButton();
 
         petSure.answerNeuteredOrSpayedQuestion(petInfo.getNeuteredSpayed());
         petSure.answerMicrochipQuestion("no");
-        petSure.clickOkayGotItButton();
     }
 
     @Test(priority=11, dataProvider = "petInfo", enabled = false)
@@ -241,29 +232,18 @@ public class TestPetsure extends BaseClass {
         petSure.enterBirthday(petInfo.getBirthDay(), petInfo.getBirthMonth(), petInfo.getBirthYear());
         petSure.clickContinueButton();
 
-        if (petInfo.getAnimal().equals("cat")) {
-            petSure.selectCatType(petInfo.getType(), petInfo.getBreed());
-        } else if (petInfo.getAnimal().equals("dog")) {
-            petSure.selectDogType(petInfo.getType(), petInfo.getBreed(), petInfo.getDominantBreed());
-        }
+        petSure.selectBreed(petInfo.getAnimal(), petInfo.getType(), petInfo.getBreed(), petInfo.getDominantBreed());
         petSure.clickContinueButton();
 
         petSure.answerNeuteredOrSpayedQuestion(petInfo.getNeuteredSpayed());
-        if (petInfo.getMicrochipped().equals("no")) {
-            petSure.answerMicrochipQuestion(petInfo.getMicrochipped());
-            petSure.clickOkayGotItButton();
-        }
-        else {
-            petSure.answerMicrochipQuestion(petInfo.getMicrochipped());
-            petSure.clickContinueButton();
-        }
+        petSure.answerMicrochipQuestion(petInfo.getMicrochipped());
 
         petSure.costPaidOrDonated("10001");
         petSure.verifyContinueButtonRemainsHidden();
     }
 
     @Test(priority=12, dataProvider = "petInfo")
-    public void test(DataPOJO petInfo) {
+    public void petMedicalConditions(DataPOJO petInfo) {
         petSure.clickAcceptAllCookiesButton();
         petSure.typePetName(petInfo.getName());
         petSure.clickContinueButton();
@@ -275,22 +255,11 @@ public class TestPetsure extends BaseClass {
         petSure.enterBirthday(petInfo.getBirthDay(), petInfo.getBirthMonth(), petInfo.getBirthYear());
         petSure.clickContinueButton();
 
-        if (petInfo.getAnimal().equals("cat")) {
-            petSure.selectCatType(petInfo.getType(), petInfo.getBreed());
-        } else if (petInfo.getAnimal().equals("dog")) {
-            petSure.selectDogType(petInfo.getType(), petInfo.getBreed(), petInfo.getDominantBreed());
-        }
+        petSure.selectBreed(petInfo.getAnimal(), petInfo.getType(), petInfo.getBreed(), petInfo.getDominantBreed());
         petSure.clickContinueButton();
 
         petSure.answerNeuteredOrSpayedQuestion(petInfo.getNeuteredSpayed());
-        if (petInfo.getMicrochipped().equals("no")) {
-            petSure.answerMicrochipQuestion(petInfo.getMicrochipped());
-            petSure.clickOkayGotItButton();
-        }
-        else {
-            petSure.answerMicrochipQuestion(petInfo.getMicrochipped());
-            petSure.clickContinueButton();
-        }
+        petSure.answerMicrochipQuestion(petInfo.getMicrochipped());
 
         petSure.costPaidOrDonated(petInfo.getDonation());
         petSure.clickContinueButton();
@@ -298,37 +267,10 @@ public class TestPetsure extends BaseClass {
         petSure.dentalIllnessCover(petInfo.getDentalIllness());
         petSure.clickContinueButton();
 
-        if (petInfo.getHealthQuestion1().equals("no")) {
-            petSure.healthCoverQuestion(petInfo.getHealthQuestion1());
-            petSure.clickContinueButton();
-        }
-        else if (petInfo.getHealthQuestion1().equals("yes")){
-            if (petInfo.getHealthQuestion2().equals("yes")) {
-                petSure.healthCoverQuestion(petInfo.getHealthQuestion1());
-                petSure.clickContinueButton();
-
-                petSure.healthCoverQuestion(petInfo.getHealthQuestion2());
-                petSure.dismissMedicalWarning();
-            }
-            else if (petInfo.getHealthQuestion2().equals("no")) {
-                petSure.healthCoverQuestion(petInfo.getHealthQuestion1());
-                petSure.clickContinueButton();
-
-                petSure.healthCoverQuestion(petInfo.getHealthQuestion2());
-                petSure.clickContinueButton();
-
-                if (petInfo.getAnimal().equals("cat")) {
-                    petSure.addStockMedicalConditionForCat();
-                } else if (petInfo.getAnimal().equals("dog")) {
-                    petSure.addStockMedicalConditionForDog();
-                }
-            }
-        }
+        petSure.healthCover(petInfo.getHealthQuestion1(), petInfo.getHealthQuestion2(), petInfo.getAnimal());
 
         petSure.agreeToAssumptions();
         petSure.clickContinueButton();
-
     }
-
 
 }

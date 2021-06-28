@@ -11,6 +11,7 @@ import resources.DataPOJO;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.time.LocalDate;
 import java.util.List;
 
 public class TestPolicyDetails extends BaseClass {
@@ -27,8 +28,8 @@ public class TestPolicyDetails extends BaseClass {
         return returnValue;
     }
 
-    @Test(dataProvider = "petInfo")
-    public void selectPetType(DataPOJO petInfo) {
+    @Test(priority=1, dataProvider = "petInfo")
+    public void addAlreadyCoveredPetDetails(DataPOJO petInfo) {
         petSure.clickAcceptAllCookiesButton();
         petSure.typePetName(petInfo.getName());
         petSure.clickContinueButton();
@@ -40,11 +41,35 @@ public class TestPolicyDetails extends BaseClass {
         petSure.enterBirthday(petInfo.getBirthDay(), petInfo.getBirthMonth(), petInfo.getBirthYear());
         petSure.clickContinueButton();
 
-        if (petInfo.getAnimal().equals("cat")) {
-            petSure.selectCatType(petInfo.getType(), petInfo.getBreed());
-        } else if (petInfo.getAnimal().equals("dog")) {
-            petSure.selectDogType(petInfo.getType(), petInfo.getBreed(), petInfo.getDominantBreed());
-        }
+        petSure.selectBreed(petInfo.getAnimal(), petInfo.getType(), petInfo.getBreed(), petInfo.getDominantBreed());
+        petSure.clickContinueButton();
+
+        petSure.answerNeuteredOrSpayedQuestion(petInfo.getNeuteredSpayed());
+        petSure.answerMicrochipQuestion(petInfo.getMicrochipped());
+
+        petSure.costPaidOrDonated(petInfo.getDonation());
+        petSure.clickContinueButton();
+
+        petSure.dentalIllnessCover(petInfo.getDentalIllness());
+        petSure.clickContinueButton();
+
+        petSure.healthCover(petInfo.getHealthQuestion1(), petInfo.getHealthQuestion2(), petInfo.getAnimal());
+
+        petSure.agreeToAssumptions();
+        petSure.clickContinueButton();
+
+        LocalDate currentdate = LocalDate.now();
+
+        String covered_pet = "Togo";
+
+        int currentYear = currentdate.getYear() +1;
+        String renew_year = Integer.toString(currentYear);
+
+        int currentMonth = currentdate.getMonthValue() +1;
+        String renew_month = Integer.toString(currentMonth);
+
+        policyDetails.addAlreadyCoveredPetDetails(covered_pet, renew_month, renew_year);
+        petSure.clickContinueButton();
     }
 
 }
