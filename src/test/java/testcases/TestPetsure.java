@@ -41,19 +41,6 @@ public class TestPetsure extends BaseClass {
         return returnValue;
     }
 
-    @DataProvider
-    public Object[][] ownerInfo() throws FileNotFoundException {
-        JsonElement jsonData = new JsonParser().parse(new FileReader("src/test/java/resources/pet-common.json"));
-        JsonElement dataSet = jsonData.getAsJsonObject().get("petOwner");
-        List<DataPOJO> testData = new Gson().fromJson(dataSet, new TypeToken<List<DataPOJO>>() {}.getType());
-        Object[][] returnValue = new Object[testData.size()][1];
-        int index = 0;
-        for (Object[] each : returnValue) {
-            each[0] = testData.get(index++);
-        }
-        return returnValue;
-    }
-
     @Test(priority=1, dataProvider = "petInfo")
     public void enterPetNameInvalid(DataPOJO petInfo) {
         petSure.clickAcceptAllCookiesButton();

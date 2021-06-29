@@ -1,27 +1,4 @@
 {
-  "petOwner": [
-    {
-      "firstname": "Madhawa",
-      "lastname": "Ratnayake",
-      "bDay": "27",
-      "bMonth": "05",
-      "bYear": "1989",
-      "countrycode": "+44",
-      "mobilenumber": "777837227",
-      "email": "madhawa@intervest.lk",
-      "password": "January*27",
-      "postcode": "NN47YB",
-      "address1": "Britannia House",
-      "address2": "Rushmills",
-      "city": "Northampton",
-      "country": "United Kingdom",
-      "cardholder": "Madhawa Ratnayake",
-      "cardnumber": "4 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1",
-      "cardmonth": "03",
-      "cardyear": "30",
-      "cardcvv": "737"
-    }
-  ],
   "petCommon": [
     {
       "animal": "cat",
