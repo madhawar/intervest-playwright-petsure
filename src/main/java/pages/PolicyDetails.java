@@ -39,6 +39,7 @@ public class PolicyDetails {
     private final String ownerCity = "input[name='city']";
     private final String ownerCountry = "select[name='country1']";
 
+    private final String labelComms = "text=Communication preferences";
     private final String commsEmail = "text=Email";
     private final String commsTelephone = "text=Telephone";
     private final String commsSMS = "text=Text message";
@@ -76,7 +77,6 @@ public class PolicyDetails {
     private final String nextButton = "text=Next";
     private final String continueButton = "text=Continue";
     private final String okGotItButton = "text=Ok, got it";
-    private String iFramePayment1;
 
     public PolicyDetails(Page page) {
         this.page = page;
@@ -135,10 +135,17 @@ public class PolicyDetails {
 
         page.click("text=Staysure Services Ltd Britannia House Rushmills Northampton");
 
-        page.click(commsEmail);
-        page.click(commsTelephone);
-        page.click(commsSMS);
-        page.click(commsPost);
+    }
+
+    public void setMarketingPreferences() {
+        page.click(labelComms);
+        page.keyboard().press("ArrowDown");
+
+//        page.click(commsEmail);
+//        page.click(commsTelephone);
+//        page.click(commsSMS);
+//        page.click(commsPost);
+
     }
 
     public void selectVetFree(String vet_fee) {
@@ -203,16 +210,15 @@ public class PolicyDetails {
     }
 
     public void enterPaymentDetails() {
-        Frame frame = page.frameByUrl(Pattern.compile(".*eshapay.*"));
-
-//        Frame frame = page.frameByUrl(Pattern.compile("pp.eshapay.net"));
+        page.waitForNavigation(() -> {
+            Frame frame = page.frame(iFramePayment);
             frame.fill(cardHolderName, "Madhawa Ratnayake");
             frame.fill(cardNumber, "4111 1111 1111 1111");
             frame.selectOption(cardExpMM, "03");
             frame.selectOption(cardExpYY, "2030");
             frame.fill(cardCVV, "737");
             frame.click(paymentConfirm);
+        });
     }
-
 
 }

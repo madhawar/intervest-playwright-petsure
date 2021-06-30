@@ -125,6 +125,7 @@ public class TestPolicyDetails extends BaseClass {
         petSure.clickContinueButton();
 
         policyDetails.fillOwnerDetails();
+        policyDetails.setMarketingPreferences();
         petSure.clickContinueButton();
 
         policyDetails.selectVetFree(petInfo.getVetFee());
