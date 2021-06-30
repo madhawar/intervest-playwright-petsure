@@ -335,6 +335,7 @@ public class Petsure {
                 });
 
                 if (animal.equals("cat")) {
+                    page.frame(iFrameHealth);
                     // page.click("text=Continue");
 
                     page.frame(iFrameHealth).click("input[name=\"conditionsearch\"]");
@@ -355,6 +356,7 @@ public class Petsure {
                         page.frame(iFrameHealth).click("button:has-text(\"Finish\")");
                     });
 
+                    page.mainFrame();
                     page.click("text=Continue");
                 } else if (animal.equals("dog")) {
                     // page.click("text=Continue");
@@ -377,6 +379,7 @@ public class Petsure {
                         page.frame(iFrameHealth).click("button:has-text(\"Finish\")");
                     });
 
+                    page.mainFrame();
                     page.click("text=Continue");
                 }
             }

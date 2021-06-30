@@ -41,7 +41,7 @@ public class TestPolicyDetails extends BaseClass {
         return returnValue;
     }
 
-    @Test(priority=1, dataProvider = "petInfo")
+    @Test(priority=1, dataProvider = "petInfo", enabled = false)
     public void addAlreadyCoveredPetDetails(DataPOJO petInfo) {
         petSure.clickAcceptAllCookiesButton();
         petSure.typePetName(petInfo.getName());
@@ -81,7 +81,10 @@ public class TestPolicyDetails extends BaseClass {
         int currentMonth = currentdate.getMonthValue() +1;
         String renew_month = Integer.toString(currentMonth);
 
+        policyDetails.selectYesForAnyOtherPets();
         policyDetails.addAlreadyCoveredPetDetails(covered_pet, renew_month, renew_year);
+        policyDetails.submitAlreadyCoveredPets();
+        policyDetails.confirmAlreadyCoveredPetPopup();
         petSure.clickContinueButton();
     }
 
@@ -122,8 +125,23 @@ public class TestPolicyDetails extends BaseClass {
         petSure.clickContinueButton();
 
         policyDetails.fillOwnerDetails();
-        policyDetails.selectCommunicationPreferences();
         petSure.clickContinueButton();
+
+        policyDetails.selectVetFree(petInfo.getVetFee());
+        policyDetails.selectExcess(petInfo.getExcess());
+        policyDetails.selectBillShare(petInfo.getBillShare());
+        petSure.clickContinueButton();
+
+        policyDetails.selectDentalIllnessCover(petInfo.getDentalIllness());
+        policyDetails.selectFarewellCover();
+        policyDetails.selectTravelAndHolidayCover();
+        policyDetails.selectMissingPetCover(petInfo.getMicrochipped());
+        petSure.clickContinueButton();
+
+        policyDetails.selectPaymentOption();
+        petSure.clickContinueButton();
+
+        policyDetails.enterPaymentDetails();
     }
 
 }

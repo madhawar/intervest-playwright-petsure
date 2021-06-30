@@ -176,4 +176,19 @@ public class DataPOJO {
         return awaiting_surgery;
     }
 
+    private String vet_fee;
+    public String getVetFee() {
+        return vet_fee;
+    }
+
+    private String excess;
+    public String getExcess() {
+        return excess;
+    }
+
+    private String bill_share;
+    public String getBillShare() {
+        return bill_share;
+    }
+
 }
