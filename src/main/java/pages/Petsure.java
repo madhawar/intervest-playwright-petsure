@@ -2,6 +2,7 @@ package pages;
 
 import com.microsoft.playwright.ElementHandle;
 import com.microsoft.playwright.Frame;
+import com.microsoft.playwright.JSHandle;
 import com.microsoft.playwright.Page;
 import org.testng.Assert;
 
@@ -86,9 +87,12 @@ public class Petsure {
     private final String assumptionsNo = "No, I don't agree";
 
     private final String iFrameHealth = "#healthFrame";
-    private final String screeningInput = "input[name='conditionsearch']";
-    private final String screeningSearch = "input:has-text('Search')";
-    private final String screeningFinish = "button:has-text('Finish";
+    private final String screeningInput = "#conditionsearch";
+    private final String screeningSearch = "#btnSearch";
+    private final String conditionTick = "//button[@title='Ticks (feline)' and @name='foundConditionid']";
+    private final String conditionAnswer1 = "//input[@name='answerNum' and @value='1']";
+    private final String conditionAnswer2 = "//input[@name='answerNum' and @value='2']";
+    private final String screeningFinish = "#btnSubmit";
 
     private final String petCost = "#petCost";
 
@@ -339,44 +343,50 @@ public class Petsure {
                     page.click(continueButton);
                 });
 
-                if (animal.equals("cat")) {
-                    ElementHandle frameElement = page.querySelector(iFrameHealth);
-                    Frame screening_cat = frameElement.contentFrame();
+                ElementHandle frameElement = page.querySelector(iFrameHealth);
+                Frame frame = frameElement.contentFrame();
+                switch (animal) {
+                    case "cat":
+                        frame.fill(screeningInput, "tick");
+                        frame.click(screeningSearch);
+                        frame.click("button[role='button']:has-text('Select')");
+                        frame.click(":nth-match(input[name='answerNum'], 2)");
+                        frame.click(":nth-match(input[name='answerNum'], 2)");
+                        frame.click(continueButton);
 
-                    screening_cat.fill(screeningInput, "tick");
-                    screening_cat.click(screeningSearch);
+                        page.waitForNavigation(() -> {
+                            frame.click(screeningFinish);
+                        });
+                        page.click(continueButton);
 
-                    screening_cat.click("button[role='button']:has-text('Select')");
-                    screening_cat.click(":nth-match(input[name='answerNum'], 2)");
-                    screening_cat.click(":nth-match(input[name='answerNum'], 2)");
+                        break;
+                    case "dog":
+                        frame.fill(screeningInput, "tick");
+                        frame.click(screeningSearch);
+                        frame.click("text=Ticks (canine) Select >> button[role='button']");
+                        frame.click("input[name='answerNum']");
+                        frame.click(":nth-match(input[name='answerNum'], 2)");
+                        frame.click(continueButton);
 
-                    screening_cat.click(continueButton);
+                        page.waitForNavigation(() -> {
+                            frame.click(screeningFinish);
+                        });
+                        page.click(continueButton);
 
-                    page.waitForNavigation(() -> {
-                        screening_cat.click(screeningFinish);
-                    });
-                    page.click(continueButton);
-
-                } else if (animal.equals("dog")) {
-                    ElementHandle frameElement = page.querySelector(iFrameHealth);
-                    Frame screening_dog = frameElement.contentFrame();
-
-                    screening_dog.fill(screeningInput, "tick");
-                    screening_dog.click(screeningSearch);
-
-                    screening_dog.click("text=Ticks (canine) Select >> button[role='button']");
-                    screening_dog.click("input[name='answerNum']");
-                    screening_dog.click(":nth-match(input[name='answerNum'], 2)");
-
-                    screening_dog.click(continueButton);
-
-                    page.waitForNavigation(() -> {
-                        screening_dog.click(screeningFinish);
-                    });
-                    page.click(continueButton);
+                        break;
                 }
             }
         }
+    }
+
+    public void screeningTest() {
+        page.waitForNavigation(() -> {
+        ElementHandle typeCondition = page.querySelector(screeningInput);
+        typeCondition.fill("tick");
+
+        ElementHandle clickSearchButton = page.querySelector(screeningSearch);
+        clickSearchButton.click();
+        });
     }
 
     public void agreeToAssumptions() {
