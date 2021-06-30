@@ -1,5 +1,6 @@
 package pages;
 
+import com.microsoft.playwright.ElementHandle;
 import com.microsoft.playwright.Frame;
 import com.microsoft.playwright.Page;
 import org.testng.Assert;
@@ -210,15 +211,14 @@ public class PolicyDetails {
     }
 
     public void enterPaymentDetails() {
-        page.waitForNavigation(() -> {
-            Frame frame = page.frame(iFramePayment);
-            frame.fill(cardHolderName, "Madhawa Ratnayake");
-            frame.fill(cardNumber, "4111 1111 1111 1111");
-            frame.selectOption(cardExpMM, "03");
-            frame.selectOption(cardExpYY, "2030");
-            frame.fill(cardCVV, "737");
-            frame.click(paymentConfirm);
-        });
+        ElementHandle frameElement = page.querySelector(iFramePayment);
+        Frame frame = frameElement.contentFrame();
+        frame.fill(cardHolderName, "Madhawa Ratnayake");
+        frame.fill(cardNumber, "4111111111111111");
+        frame.selectOption(cardExpMM, "03");
+        frame.selectOption(cardExpYY, "2030");
+        frame.fill(cardCVV, "737");
+        frame.click(paymentConfirm);
     }
 
 }

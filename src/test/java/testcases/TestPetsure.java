@@ -43,8 +43,6 @@ public class TestPetsure extends BaseClass {
 
     @Test(priority=1, dataProvider = "petInfo")
     public void enterPetNameInvalid(DataPOJO petInfo) {
-        petSure.clickAcceptAllCookiesButton();
-
         petSure.typePetName("");
         petSure.verifyPetNameEmpty();
 
@@ -57,15 +55,12 @@ public class TestPetsure extends BaseClass {
 
     @Test(priority=2, dataProvider = "petInfo")
     public void enterPetNameValid(DataPOJO petInfo) {
-        petSure.clickAcceptAllCookiesButton();
-
         petSure.typePetName(petInfo.getName());
         petSure.clickContinueButton();
     }
 
     @Test(priority=3, dataProvider = "petInfo")
     public void enterPetGender(DataPOJO petInfo) {
-        petSure.clickAcceptAllCookiesButton();
         petSure.typePetName(petInfo.getName());
         petSure.clickContinueButton();
 
@@ -77,7 +72,6 @@ public class TestPetsure extends BaseClass {
 
     @Test(priority=4, dataProvider = "petInfo")
     public void enterPetBirthdayAgeMin(DataPOJO petInfo) {
-        petSure.clickAcceptAllCookiesButton();
         petSure.typePetName(petInfo.getName());
         petSure.clickContinueButton();
 
@@ -103,7 +97,6 @@ public class TestPetsure extends BaseClass {
 
     @Test(priority=5, dataProvider = "petInfo")
     public void enterPetBirthdayAgeMax(DataPOJO petInfo) {
-        petSure.clickAcceptAllCookiesButton();
         petSure.typePetName(petInfo.getName());
         petSure.clickContinueButton();
 
@@ -123,7 +116,6 @@ public class TestPetsure extends BaseClass {
 
     @Test(priority=6, dataProvider = "petInfo")
     public void enterPetBirthday(DataPOJO petInfo) {
-        petSure.clickAcceptAllCookiesButton();
         petSure.typePetName(petInfo.getName());
         petSure.clickContinueButton();
 
@@ -137,7 +129,6 @@ public class TestPetsure extends BaseClass {
 
     @Test(priority=7, dataProvider = "petInfo")
     public void selectPetType(DataPOJO petInfo) {
-        petSure.clickAcceptAllCookiesButton();
         petSure.typePetName(petInfo.getName());
         petSure.clickContinueButton();
 
@@ -154,7 +145,6 @@ public class TestPetsure extends BaseClass {
 
     @Test(priority=8, dataProvider = "petDog")
     public void selectDogCrossBreeds(DataPOJO petInfo) {
-        petSure.clickAcceptAllCookiesButton();
         petSure.typePetName(petInfo.getName());
         petSure.clickContinueButton();
 
@@ -171,7 +161,6 @@ public class TestPetsure extends BaseClass {
 
     @Test(priority=9, dataProvider = "petDog")
     public void selectDogMixedBreeds(DataPOJO petInfo) {
-        petSure.clickAcceptAllCookiesButton();
         petSure.typePetName(petInfo.getName());
         petSure.clickContinueButton();
 
@@ -188,7 +177,6 @@ public class TestPetsure extends BaseClass {
 
     @Test(priority=10, dataProvider = "petInfo")
     public void popupWhenNotMicrochipped(DataPOJO petInfo) {
-        petSure.clickAcceptAllCookiesButton();
         petSure.typePetName(petInfo.getName());
         petSure.clickContinueButton();
 
@@ -208,7 +196,6 @@ public class TestPetsure extends BaseClass {
 
     @Test(priority=11, dataProvider = "petInfo", enabled = false)
     public void petCostValidations(DataPOJO petInfo) {
-        petSure.clickAcceptAllCookiesButton();
         petSure.typePetName(petInfo.getName());
         petSure.clickContinueButton();
 
@@ -231,7 +218,6 @@ public class TestPetsure extends BaseClass {
 
     @Test(priority=12, dataProvider = "petInfo")
     public void petMedicalConditions(DataPOJO petInfo) {
-        petSure.clickAcceptAllCookiesButton();
         petSure.typePetName(petInfo.getName());
         petSure.clickContinueButton();
 

@@ -1,5 +1,7 @@
 package pages;
 
+import com.microsoft.playwright.ElementHandle;
+import com.microsoft.playwright.Frame;
 import com.microsoft.playwright.Page;
 import org.testng.Assert;
 
@@ -84,6 +86,9 @@ public class Petsure {
     private final String assumptionsNo = "No, I don't agree";
 
     private final String iFrameHealth = "#healthFrame";
+    private final String screeningInput = "input[name='conditionsearch']";
+    private final String screeningSearch = "input:has-text('Search')";
+    private final String screeningFinish = "button:has-text('Finish";
 
     private final String petCost = "#petCost";
 
@@ -335,52 +340,40 @@ public class Petsure {
                 });
 
                 if (animal.equals("cat")) {
-                    page.frame(iFrameHealth);
-                    // page.click("text=Continue");
+                    ElementHandle frameElement = page.querySelector(iFrameHealth);
+                    Frame screening_cat = frameElement.contentFrame();
 
-                    page.frame(iFrameHealth).click("input[name=\"conditionsearch\"]");
+                    screening_cat.fill(screeningInput, "tick");
+                    screening_cat.click(screeningSearch);
 
-                    page.frame(iFrameHealth).fill("input[name=\"conditionsearch\"]", "tick");
+                    screening_cat.click("button[role='button']:has-text('Select')");
+                    screening_cat.click(":nth-match(input[name='answerNum'], 2)");
+                    screening_cat.click(":nth-match(input[name='answerNum'], 2)");
 
-                    page.frame(iFrameHealth).click("input:has-text(\"Search\")");
-
-                    page.frame(iFrameHealth).click("button[role=\"button\"]:has-text(\"Select\")");
-
-                    page.frame(iFrameHealth).click(":nth-match(input[name=\"answerNum\"], 2)");
-
-                    page.frame(iFrameHealth).click(":nth-match(input[name=\"answerNum\"], 2)");
-
-                    page.frame(iFrameHealth).click("text=Continue");
+                    screening_cat.click(continueButton);
 
                     page.waitForNavigation(() -> {
-                        page.frame(iFrameHealth).click("button:has-text(\"Finish\")");
+                        screening_cat.click(screeningFinish);
                     });
+                    page.click(continueButton);
 
-                    page.mainFrame();
-                    page.click("text=Continue");
                 } else if (animal.equals("dog")) {
-                    // page.click("text=Continue");
+                    ElementHandle frameElement = page.querySelector(iFrameHealth);
+                    Frame screening_dog = frameElement.contentFrame();
 
-                    page.frame(iFrameHealth).click("input[name=\"conditionsearch\"]");
+                    screening_dog.fill(screeningInput, "tick");
+                    screening_dog.click(screeningSearch);
 
-                    page.frame(iFrameHealth).fill("input[name=\"conditionsearch\"]", "tick");
+                    screening_dog.click("text=Ticks (canine) Select >> button[role='button']");
+                    screening_dog.click("input[name='answerNum']");
+                    screening_dog.click(":nth-match(input[name='answerNum'], 2)");
 
-                    page.frame(iFrameHealth).click("input:has-text(\"Search\")");
-
-                    page.frame(iFrameHealth).click("text=Ticks (canine) Select >> button[role=\"button\"]");
-
-                    page.frame(iFrameHealth).click("input[name=\"answerNum\"]");
-
-                    page.frame(iFrameHealth).click(":nth-match(input[name=\"answerNum\"], 2)");
-
-                    page.frame(iFrameHealth).click("text=Continue");
+                    screening_dog.click(continueButton);
 
                     page.waitForNavigation(() -> {
-                        page.frame(iFrameHealth).click("button:has-text(\"Finish\")");
+                        screening_dog.click(screeningFinish);
                     });
-
-                    page.mainFrame();
-                    page.click("text=Continue");
+                    page.click(continueButton);
                 }
             }
         }

@@ -43,7 +43,6 @@ public class TestPolicyDetails extends BaseClass {
 
     @Test(priority=1, dataProvider = "petInfo", enabled = false)
     public void addAlreadyCoveredPetDetails(DataPOJO petInfo) {
-        petSure.clickAcceptAllCookiesButton();
         petSure.typePetName(petInfo.getName());
         petSure.clickContinueButton();
 
@@ -90,7 +89,6 @@ public class TestPolicyDetails extends BaseClass {
 
     @Test(priority=2, dataProvider = "petInfo")
     public void test(DataPOJO petInfo) {
-        petSure.clickAcceptAllCookiesButton();
         petSure.typePetName(petInfo.getName());
         petSure.clickContinueButton();
 

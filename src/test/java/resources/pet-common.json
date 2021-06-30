@@ -14,7 +14,7 @@
       "microchipped": "yes",
       "donation": "1000",
       "dental_illness": "no",
-      "visited_vet_prescribed_medication": "no",
+      "visited_vet_prescribed_medication": "yes",
       "awaiting_surgery": "no",
       "vet_fee": "10,000",
       "excess": "100",
