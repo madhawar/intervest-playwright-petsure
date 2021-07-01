@@ -5,3 +5,204 @@
 [INFO ] 2021-07-01 13:48:49.156 [main] Log - Browser started and resized. Navigated to the URL, then accepted cookies!
 [INFO ] 2021-07-01 13:49:38.753 [main] Log - Closing web browser.
 [INFO ] 2021-07-01 13:49:39.226 [main] Log - Starting web browser Google Chrome
+[INFO ] 2021-07-01 14:02:51.373 [main] Log - Starting web browser Google Chrome
+[INFO ] 2021-07-01 14:02:56.135 [main] Log - Browser started and resized. Navigated to the URL, then accepted cookies!
+[INFO ] 2021-07-01 14:04:20.307 [main] Log - Closing web browser.
+[INFO ] 2021-07-01 14:04:20.829 [main] Log - Starting web browser Google Chrome
+[INFO ] 2021-07-01 14:05:54.330 [main] Log - Starting web browser Google Chrome
+[INFO ] 2021-07-01 14:05:59.248 [main] Log - Browser started and resized. Navigated to the URL, then accepted cookies!
+[INFO ] 2021-07-01 14:06:52.307 [main] Log - Closing web browser.
+[INFO ] 2021-07-01 14:06:52.784 [main] Log - Starting web browser Google Chrome
+[INFO ] 2021-07-01 14:07:52.061 [main] Log - Starting web browser Google Chrome
+[INFO ] 2021-07-01 14:07:55.098 [main] Log - Browser started and resized. Navigated to the URL, then accepted cookies!
+[INFO ] 2021-07-01 14:08:43.418 [main] Log - Submitted owner details.
+[INFO ] 2021-07-01 14:08:50.560 [main] Log - Clicked Continue button to proceed to the payment gateway,
+[INFO ] 2021-07-01 14:08:57.484 [main] Log - Submitted payment details.
+[INFO ] 2021-07-01 14:09:36.462 [main] Log - Closing web browser.
+[INFO ] 2021-07-01 14:09:36.933 [main] Log - Starting web browser Google Chrome
+[INFO ] 2021-07-01 14:10:45.662 [main] Log - Starting web browser Google Chrome
+[INFO ] 2021-07-01 14:10:49.397 [main] Log - Browser started and resized. Navigated to the URL, then accepted cookies!
+[INFO ] 2021-07-01 14:11:43.301 [main] Log - Closing web browser.
+[INFO ] 2021-07-01 14:35:23.911 [main] Log - Starting web browser Google Chrome
+[INFO ] 2021-07-01 14:35:29.053 [main] Log - Browser started and resized. Navigated to the URL, then accepted cookies!
+[INFO ] 2021-07-01 14:35:29.156 [main] Log - Closing web browser.
+[INFO ] 2021-07-01 14:35:29.645 [main] Log - Starting web browser Google Chrome
+[INFO ] 2021-07-01 14:35:33.337 [main] Log - Browser started and resized. Navigated to the URL, then accepted cookies!
+[INFO ] 2021-07-01 14:35:33.454 [main] Log - Closing web browser.
+[INFO ] 2021-07-01 14:43:43.543 [main] Log - Starting web browser Google Chrome
+[INFO ] 2021-07-01 14:43:48.439 [main] Log - Browser started and resized. Navigated to the URL, then accepted cookies!
+[INFO ] 2021-07-01 14:43:51.411 [main] Log - Closing web browser.
+[INFO ] 2021-07-01 14:49:51.693 [main] Log - Starting web browser Google Chrome
+[INFO ] 2021-07-01 14:49:56.726 [main] Log - Browser started and resized. Navigated to the URL, then accepted cookies!
+[INFO ] 2021-07-01 14:49:56.822 [main] Log - Entered pet name.
+[INFO ] 2021-07-01 14:50:03.234 [main] Log - Selected type of the pet.
+[INFO ] 2021-07-01 14:50:31.190 [main] Log - Closing web browser.
+[INFO ] 2021-07-01 14:51:48.243 [main] Log - Starting web browser Google Chrome
+[INFO ] 2021-07-01 14:51:53.293 [main] Log - Browser started and resized. Navigated to the URL, then accepted cookies!
+[INFO ] 2021-07-01 14:51:55.308 [main] Log - Entered pet name.
+[INFO ] 2021-07-01 14:51:57.802 [main] Log - Selected type of the pet.
+[INFO ] 2021-07-01 14:52:00.074 [main] Log - Selected gender of the pet.
+[INFO ] 2021-07-01 14:52:00.211 [main] Log - Entered pet's birthday.
+[INFO ] 2021-07-01 14:52:02.209 [main] Log - Selected breed of the pet.
+[INFO ] 2021-07-01 14:52:03.482 [main] Log - Answered Neutered or Spayed question.
+[INFO ] 2021-07-01 14:52:03.583 [main] Log - Answered Microchipped question.
+[INFO ] 2021-07-01 14:52:07.980 [main] Log - Closing web browser.
+[INFO ] 2021-07-01 14:53:04.861 [main] Log - Starting web browser Google Chrome
+[INFO ] 2021-07-01 14:53:09.991 [main] Log - Browser started and resized. Navigated to the URL, then accepted cookies!
+[INFO ] 2021-07-01 14:53:10.183 [main] Log - Entered pet name.
+[INFO ] 2021-07-01 14:53:20.087 [main] Log - Closing web browser.
+[INFO ] 2021-07-01 14:53:54.924 [main] Log - Starting web browser Google Chrome
+[INFO ] 2021-07-01 14:53:59.957 [main] Log - Browser started and resized. Navigated to the URL, then accepted cookies!
+[INFO ] 2021-07-01 14:54:03.311 [main] Log - Entered pet name.
+[INFO ] 2021-07-01 14:54:05.487 [main] Log - Selected type of the pet.
+[INFO ] 2021-07-01 14:54:05.592 [main] Log - Selected gender of the pet.
+[INFO ] 2021-07-01 14:54:05.744 [main] Log - Entered pet's birthday.
+[INFO ] 2021-07-01 14:54:08.067 [main] Log - Selected breed of the pet.
+[INFO ] 2021-07-01 14:54:09.451 [main] Log - Answered Neutered or Spayed question.
+[INFO ] 2021-07-01 14:54:09.528 [main] Log - Answered Microchipped question.
+[INFO ] 2021-07-01 14:54:15.813 [main] Log - Closing web browser.
+[INFO ] 2021-07-01 14:54:59.045 [main] Log - Starting web browser Google Chrome
+[INFO ] 2021-07-01 14:55:03.226 [main] Log - Browser started and resized. Navigated to the URL, then accepted cookies!
+[INFO ] 2021-07-01 14:55:03.356 [main] Log - Entered pet name.
+[INFO ] 2021-07-01 14:55:33.910 [main] Log - Starting web browser Google Chrome
+[INFO ] 2021-07-01 14:55:39.090 [main] Log - Browser started and resized. Navigated to the URL, then accepted cookies!
+[INFO ] 2021-07-01 14:55:42.149 [main] Log - Entered pet name.
+[INFO ] 2021-07-01 14:55:44.368 [main] Log - Selected type of the pet.
+[INFO ] 2021-07-01 14:55:44.469 [main] Log - Selected gender of the pet.
+[INFO ] 2021-07-01 14:55:44.638 [main] Log - Entered pet's birthday.
+[INFO ] 2021-07-01 14:55:47.223 [main] Log - Selected breed of the pet.
+[INFO ] 2021-07-01 14:55:48.459 [main] Log - Answered Neutered or Spayed question.
+[INFO ] 2021-07-01 14:55:48.752 [main] Log - Answered Microchipped question.
+[INFO ] 2021-07-01 14:55:50.195 [main] Log - Entered amount donated or paid.
+[INFO ] 2021-07-01 14:55:58.529 [main] Log - Closing web browser.
+[INFO ] 2021-07-01 14:56:19.903 [main] Log - Starting web browser Google Chrome
+[INFO ] 2021-07-01 14:56:24.381 [main] Log - Browser started and resized. Navigated to the URL, then accepted cookies!
+[INFO ] 2021-07-01 14:56:24.515 [main] Log - Entered pet name.
+[INFO ] 2021-07-01 14:56:35.085 [main] Log - Closing web browser.
+[INFO ] 2021-07-01 14:57:05.812 [main] Log - Starting web browser Google Chrome
+[INFO ] 2021-07-01 14:57:11.853 [main] Log - Browser started and resized. Navigated to the URL, then accepted cookies!
+[INFO ] 2021-07-01 14:57:14.707 [main] Log - Entered pet name.
+[INFO ] 2021-07-01 14:57:18.405 [main] Log - Selected type of the pet.
+[INFO ] 2021-07-01 14:57:18.518 [main] Log - Selected gender of the pet.
+[INFO ] 2021-07-01 14:57:18.685 [main] Log - Entered pet's birthday.
+[INFO ] 2021-07-01 14:57:20.870 [main] Log - Selected breed of the pet.
+[INFO ] 2021-07-01 14:57:22.222 [main] Log - Answered Neutered or Spayed question.
+[INFO ] 2021-07-01 14:57:22.299 [main] Log - Answered Microchipped question.
+[INFO ] 2021-07-01 14:57:34.690 [main] Log - Closing web browser.
+[INFO ] 2021-07-01 14:58:12.336 [main] Log - Starting web browser Google Chrome
+[INFO ] 2021-07-01 14:58:17.387 [main] Log - Browser started and resized. Navigated to the URL, then accepted cookies!
+[INFO ] 2021-07-01 14:58:20.292 [main] Log - Entered pet name.
+[INFO ] 2021-07-01 14:58:22.409 [main] Log - Selected type of the pet.
+[INFO ] 2021-07-01 14:58:22.521 [main] Log - Selected gender of the pet.
+[INFO ] 2021-07-01 14:58:22.684 [main] Log - Entered pet's birthday.
+[INFO ] 2021-07-01 14:58:24.697 [main] Log - Selected breed of the pet.
+[INFO ] 2021-07-01 14:58:26.053 [main] Log - Answered Neutered or Spayed question.
+[INFO ] 2021-07-01 14:58:42.185 [main] Log - Closing web browser.
+[INFO ] 2021-07-01 15:16:32.248 [main] Log - Starting web browser Google Chrome
+[INFO ] 2021-07-01 15:16:37.129 [main] Log - Browser started and resized. Navigated to the URL, then accepted cookies. App version: null
+[INFO ] 2021-07-01 15:16:40.890 [main] Log - Entered pet name.
+[INFO ] 2021-07-01 15:16:43.290 [main] Log - Selected type of the pet.
+[INFO ] 2021-07-01 15:16:43.406 [main] Log - Selected gender of the pet.
+[INFO ] 2021-07-01 15:16:46.665 [main] Log - Entered pet's birthday.
+[INFO ] 2021-07-01 15:16:49.206 [main] Log - Selected breed of the pet.
+[INFO ] 2021-07-01 15:16:49.316 [main] Log - Answered Neutered or Spayed question.
+[INFO ] 2021-07-01 15:16:51.199 [main] Log - Answered Microchipped question.
+[INFO ] 2021-07-01 15:16:53.007 [main] Log - Entered amount donated or paid.
+[INFO ] 2021-07-01 15:16:54.933 [main] Log - Answered Dental Illness cover question.
+[INFO ] 2021-07-01 15:16:56.803 [main] Log - Completed medical screening.
+[INFO ] 2021-07-01 15:16:59.057 [main] Log - Agreed to assumptions.
+[INFO ] 2021-07-01 15:17:00.305 [main] Log - Selected No for other pets.
+[INFO ] 2021-07-01 15:17:02.456 [main] Log - Selected policy start date.
+[INFO ] 2021-07-01 15:17:03.371 [main] Log - Submitted owner details along with the email address: madhawa_ist+20210701151702pet@pm.me
+[INFO ] 2021-07-01 15:17:31.452 [main] Log - Clicked Continue button.
+[INFO ] 2021-07-01 15:17:31.453 [main] Log - Submitted owner details.
+[INFO ] 2021-07-01 15:17:31.622 [main] Log - Select Vet Fee.
+[INFO ] 2021-07-01 15:17:31.797 [main] Log - Select Excess.
+[INFO ] 2021-07-01 15:17:31.848 [main] Log - Select Bill Share.
+[INFO ] 2021-07-01 15:17:37.954 [main] Log - Clicked Continue button.
+[INFO ] 2021-07-01 15:17:37.955 [main] Log - NOT ELIGIBLE FOR Dental Illness extra.
+[INFO ] 2021-07-01 15:17:38.131 [main] Log - Farewell extra selected.
+[INFO ] 2021-07-01 15:17:38.207 [main] Log - Travel and Holiday extra selected.
+[INFO ] 2021-07-01 15:17:38.273 [main] Log - Selected Missing Pet extra.
+[INFO ] 2021-07-01 15:17:41.141 [main] Log - Clicked Continue button.
+[INFO ] 2021-07-01 15:17:45.674 [main] Log - Seleted payment option and agreed to conditions.
+[INFO ] 2021-07-01 15:17:47.914 [main] Log - Submitted payment details.
+[INFO ] 2021-07-01 15:17:47.914 [main] Log - iwarai
+[INFO ] 2021-07-01 15:18:26.992 [main] Log - Closing web browser.
+[INFO ] 2021-07-01 15:47:29.852 [main] Log - Starting web browser Google Chrome
+[INFO ] 2021-07-01 15:47:33.875 [main] Log - Navigated to https://exaltwebuat.petsure.com/pet-name and accepted cookies. Petsure version: null
+[INFO ] 2021-07-01 15:47:37.099 [main] Log - Entered pet name.
+[INFO ] 2021-07-01 15:47:39.170 [main] Log - Selected type of the pet.
+[INFO ] 2021-07-01 15:47:39.231 [main] Log - Selected gender of the pet.
+[INFO ] 2021-07-01 15:47:41.810 [main] Log - Entered pet's birthday.
+[INFO ] 2021-07-01 15:47:44.033 [main] Log - Selected breed of the pet.
+[INFO ] 2021-07-01 15:47:44.102 [main] Log - Answered Neutered or Spayed question.
+[INFO ] 2021-07-01 15:47:46.062 [main] Log - Answered Microchipped question.
+[INFO ] 2021-07-01 15:47:48.214 [main] Log - Entered amount donated or paid.
+[INFO ] 2021-07-01 15:47:50.357 [main] Log - Answered Dental Illness cover question.
+[INFO ] 2021-07-01 15:47:52.398 [main] Log - Completed medical screening.
+[INFO ] 2021-07-01 15:47:54.580 [main] Log - Agreed to assumptions.
+[INFO ] 2021-07-01 15:47:55.869 [main] Log - Selected No for other pets.
+[INFO ] 2021-07-01 15:47:58.207 [main] Log - Selected policy start date.
+[INFO ] 2021-07-01 15:48:00.143 [main] Log - Submitted owner details along with the email address: madhawa_ist+20210701154758pet@pm.me
+[INFO ] 2021-07-01 15:48:19.923 [main] Log - Clicked Continue button.
+[INFO ] 2021-07-01 15:48:19.924 [main] Log - Submitted owner details.
+[INFO ] 2021-07-01 15:48:20.061 [main] Log - Select Vet Fee.
+[INFO ] 2021-07-01 15:48:20.295 [main] Log - Select Excess.
+[INFO ] 2021-07-01 15:48:20.428 [main] Log - Select Bill Share.
+[INFO ] 2021-07-01 15:48:26.450 [main] Log - Clicked Continue button.
+[INFO ] 2021-07-01 15:48:26.450 [main] Log - NOT ELIGIBLE FOR Dental Illness extra.
+[INFO ] 2021-07-01 15:48:26.537 [main] Log - Farewell extra selected.
+[INFO ] 2021-07-01 15:48:26.670 [main] Log - Travel and Holiday extra selected.
+[INFO ] 2021-07-01 15:48:26.723 [main] Log - Selected Missing Pet extra.
+[INFO ] 2021-07-01 15:48:29.939 [main] Log - Clicked Continue button.
+[INFO ] 2021-07-01 15:48:34.788 [main] Log - Seleted payment option and agreed to conditions.
+[INFO ] 2021-07-01 15:48:36.904 [main] Log - Submitted payment details.
+[INFO ] 2021-07-01 15:49:28.618 [main] Log - Closing web browser.
+[INFO ] 2021-07-01 15:52:08.345 [main] Log - Starting web browser Chromium headless
+[INFO ] 2021-07-01 15:52:12.743 [main] Log - Navigated to https://exaltwebuat.petsure.com/pet-name and accepted cookies. Petsure version: null
+[INFO ] 2021-07-01 15:52:16.092 [main] Log - Entered pet name.
+[INFO ] 2021-07-01 15:52:18.119 [main] Log - Selected type of the pet.
+[INFO ] 2021-07-01 15:52:18.294 [main] Log - Selected gender of the pet.
+[INFO ] 2021-07-01 15:52:20.283 [main] Log - Entered pet's birthday.
+[INFO ] 2021-07-01 15:52:22.861 [main] Log - Selected breed of the pet.
+[INFO ] 2021-07-01 15:52:22.978 [main] Log - Answered Neutered or Spayed question.
+[INFO ] 2021-07-01 15:52:25.170 [main] Log - Answered Microchipped question.
+[INFO ] 2021-07-01 15:52:27.111 [main] Log - Entered amount donated or paid.
+[INFO ] 2021-07-01 15:52:28.994 [main] Log - Answered Dental Illness cover question.
+[INFO ] 2021-07-01 15:52:31.096 [main] Log - Completed medical screening.
+[INFO ] 2021-07-01 15:52:33.471 [main] Log - Agreed to assumptions.
+[INFO ] 2021-07-01 15:52:35.481 [main] Log - Selected No for other pets.
+[INFO ] 2021-07-01 15:52:37.946 [main] Log - Selected policy start date.
+[INFO ] 2021-07-01 15:52:38.764 [main] Log - Submitted owner details along with the email address: madhawa_ist+20210701155237pet@pm.me
+[INFO ] 2021-07-01 15:52:41.817 [main] Log - Clicked Continue button.
+[INFO ] 2021-07-01 15:52:41.817 [main] Log - Submitted owner details.
+[INFO ] 2021-07-01 15:52:42.037 [main] Log - Select Vet Fee.
+[INFO ] 2021-07-01 15:52:42.288 [main] Log - Select Excess.
+[INFO ] 2021-07-01 15:52:42.367 [main] Log - Select Bill Share.
+[INFO ] 2021-07-01 15:52:47.384 [main] Log - Clicked Continue button.
+[INFO ] 2021-07-01 15:52:47.384 [main] Log - NOT ELIGIBLE FOR Dental Illness extra.
+[INFO ] 2021-07-01 15:52:47.564 [main] Log - Farewell extra selected.
+[INFO ] 2021-07-01 15:52:47.635 [main] Log - Travel and Holiday extra selected.
+[INFO ] 2021-07-01 15:52:47.701 [main] Log - Selected Missing Pet extra.
+[INFO ] 2021-07-01 15:52:50.279 [main] Log - Clicked Continue button.
+[INFO ] 2021-07-01 15:52:58.359 [main] Log - Seleted payment option and agreed to conditions.
+[INFO ] 2021-07-01 15:52:58.462 [main] Log - Submitted payment details.
+[INFO ] 2021-07-01 15:53:37.410 [main] Log - Closing web browser.
+[INFO ] 2021-07-01 15:55:20.600 [main] Log - Starting web browser Google Chrome
+[INFO ] 2021-07-01 15:55:24.649 [main] Log - Navigated to https://exaltwebuat.petsure.com/pet-name and accepted cookies. Petsure version: null
+[INFO ] 2021-07-01 15:55:27.473 [main] Log - Entered pet name.
+[INFO ] 2021-07-01 15:55:29.711 [main] Log - Selected type of the pet.
+[INFO ] 2021-07-01 15:55:29.818 [main] Log - Selected gender of the pet.
+[INFO ] 2021-07-01 15:55:32.117 [main] Log - Entered pet's birthday.
+[INFO ] 2021-07-01 15:55:34.899 [main] Log - Selected breed of the pet.
+[INFO ] 2021-07-01 15:55:35.016 [main] Log - Answered Neutered or Spayed question.
+[INFO ] 2021-07-01 15:55:37.007 [main] Log - Answered Microchipped question.
+[INFO ] 2021-07-01 15:55:38.917 [main] Log - Entered amount donated or paid.
+[INFO ] 2021-07-01 15:55:41.159 [main] Log - Answered Dental Illness cover question.
+[INFO ] 2021-07-01 15:55:43.153 [main] Log - Completed medical screening.
+[INFO ] 2021-07-01 15:55:45.288 [main] Log - Agreed to assumptions.
+[INFO ] 2021-07-01 15:55:46.822 [main] Log - Selected No for other pets.
+[INFO ] 2021-07-01 15:55:49.540 [main] Log - Selected policy start date.
+[INFO ] 2021-07-01 15:55:50.393 [main] Log - Submitted owner details along with the email address: madhawa_ist+20210701155549pet@pm.me
+[INFO ] 2021-07-01 15:56:20.417 [main] Log - Closing web browser.

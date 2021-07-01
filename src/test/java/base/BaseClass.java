@@ -55,8 +55,10 @@ public class BaseClass {
         Page page = browser.newPage();
         page.setViewportSize( 1920, 1080);
         page.navigate(pointer);
+
+        String petsure_version = page.waitForSelector(".sticky-ver-label").getAttribute("innerText");
         page.click("text=Accept all");
-        Log.info("Browser started and resized. Navigated to the URL, then accepted cookies!");
+        Log.info("Navigated to " + pointer + " and accepted cookies. Petsure version: " + petsure_version);
 
         petSure = new Petsure(page);
         policyDetails = new PolicyDetails(page);

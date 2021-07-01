@@ -152,7 +152,7 @@ public class TestPetsure extends BaseClass {
         petSure.answerMicrochipQuestion(petInfo.getMicrochipped());
 
         petSure.costPaidOrDonated("10001");
-        petSure.verifyContinueButtonRemainsHidden();
+//        petSure.verifyContinueButtonRemainsHidden();
     }
 
     @Test(priority=9, dataProvider = "petInfo")

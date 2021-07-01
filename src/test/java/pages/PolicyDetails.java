@@ -4,6 +4,7 @@ import com.microsoft.playwright.ElementHandle;
 import com.microsoft.playwright.Frame;
 import com.microsoft.playwright.Page;
 import org.testng.Assert;
+import utils.Log;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -96,21 +97,22 @@ public class PolicyDetails {
         });
     }
 
-    public void scrollDown() {
-        page.keyboard().press("Tab");
-        page.keyboard().press("ArrowDown");
-    }
-
     public void selectYesForAnyOtherPets() {
         page.click(anyOtherPetsYes);
+        page.waitForNavigation(() -> {
+            page.click(continueButton);
+        });
+
+        Log.info("Selected Yes for other pets.");
     }
 
     public void selectNoForAnyOtherPets() {
         page.click(anyOtherPetsNo);
-
         page.waitForNavigation(() -> {
             page.click(continueButton);
         });
+
+        Log.info("Selected No for other pets.");
     }
 
     public void addAlreadyCoveredPetDetails(String covered_pet, String renew_month, String renew_year) {
@@ -118,18 +120,16 @@ public class PolicyDetails {
         page.fill(alreadyCoveredPet, covered_pet);
         page.fill(alreadyCoveredPetRenewMonth, renew_month);
         page.fill(alreadyCoveredPetRenewYear, renew_year);
-    }
 
-    public void submitAlreadyCoveredPets() {
         page.click(petsAlreadyCoveredSubmit);
-    }
 
-    public void confirmAlreadyCoveredPetPopup() {
         page.waitForNavigation(() -> {
             page.click(petsAlreadyCoveredConfirmPopup);
         });
 
         page.click(continueButton);
+
+        Log.info("Adding info of already covered pets.");
     }
 
     public void selectPolicyStartDate() {
@@ -138,13 +138,14 @@ public class PolicyDetails {
         page.waitForNavigation(() -> {
             page.click(continueButton);
         });
+
+        Log.info("Selected policy start date.");
     }
 
     public void fillOwnerDetails() {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("uuuuMMddHHmmss");
         LocalDateTime now = LocalDateTime.now();
         String email_address = "madhawa_ist+" + dtf.format(now) + "pet@pm.me";
-        System.out.println(email_address);
 
         page.selectOption(ownerTitle, "Mr");
         page.fill(ownerFirstName, "Madhawa");
@@ -155,11 +156,12 @@ public class PolicyDetails {
         page.fill(ownerEmail, email_address);
         page.fill(ownerTelephone, "0777837227");
         page.fill(ownerPostcode, "NN47YB");
-
         page.click("text=Staysure Services Ltd Britannia House Rushmills Northampton");
 
         page.click(labelComms);
         page.keyboard().press("ArrowDown");
+
+        Log.info("Submitted owner details along with the email address: " + email_address);
     }
 
     public void setMarketingPreferences() {
@@ -167,41 +169,46 @@ public class PolicyDetails {
         page.click(commsTelephone);
         page.click(commsSMS);
         page.click(commsPost);
+
+        Log.info("Set marketing preferences.");
     }
 
-    public void selectVetFree(String vet_fee) {
+    public void selectVetFree(String vet_fee) { // Supported values 1,000 | 3,000 | 5,000 | 7,500 | 10,000 | 15,000
         page.click("text=£" + vet_fee);
-        // Supported values 1,000 | 3,000 | 5,000 | 7,500 | 10,000 | 15,000
+
         page.keyboard().press("Tab");
         page.keyboard().press("ArrowDown");
+
+        Log.info("Select Vet Fee.");
     }
 
-    public void selectExcess(String excess) {
+    public void selectExcess(String excess) { // Supported values 0 | 100 | 200 | 300 | 400 | 500
         page.click("text=£" + excess);
-        // Supported values 0 | 100 | 200 | 300 | 400 | 500
+
         page.keyboard().press("Tab");
         page.keyboard().press("ArrowDown");
+
+        Log.info("Select Excess.");
     }
 
-    public void selectBillShare(String bill_share) {
+    public void selectBillShare(String bill_share) { // Supported values 0 | 10 | 20 | 30
         page.click("text=" + bill_share + "%");
-        // Supported values 0 | 10 | 20 | 30
+
         page.keyboard().press("Tab");
         page.keyboard().press("ArrowDown");
-    }
 
-    public void openDocumentIPIDS() {
-        page.click(docIPID);
-    }
-
-    public void openDocumentPolicyWording() {
-        page.click(docPolicyWording);
+        Log.info("Select Bill Share.");
     }
 
     public void selectDentalIllnessCover(String dental_illness) {
         if (dental_illness.equals("yes")) {
             String h3 = page.innerText(labelDentalIllness);
             Assert.assertEquals("Dental Illness Cover", h3);
+
+            Log.info("Dental Illness extra already included.");
+        }
+        else {
+            Log.info("NOT ELIGIBLE FOR Dental Illness extra.");
         }
     }
 
@@ -209,12 +216,16 @@ public class PolicyDetails {
         String h3 = page.innerText(labelFarewell);
         Assert.assertEquals("Farewell Cover", h3);
         page.click(extraFarewell);
+
+        Log.info("Farewell extra selected.");
     }
 
     public void selectTravelAndHolidayCover() {
         String h3 = page.innerText(labelTavelAndHoliday);
         Assert.assertEquals("Travel & Holiday Cover", h3);
         page.click(extraTravelAndHoliday);
+
+        Log.info("Travel and Holiday extra selected.");
     }
 
     public void selectMissingPetCover(String microchipped) {
@@ -222,17 +233,22 @@ public class PolicyDetails {
             String h3 = page.innerText(labelMissingPet);
             Assert.assertEquals("Missing Pet Cover", h3);
             page.click(extraMissingPet);
+
+            Log.info("Selected Missing Pet extra.");
+        }
+        else {
+            Log.info("NOT ELIGIBLE FOR Missing Pet extra.");
         }
     }
 
     public void selectPaymentOption() {
         page.click(payAnnually);
         page.click(agreeToTerms);
-
         page.waitForNavigation(() -> {
             page.click(continueButton);
-
         });
+
+        Log.info("Seleted payment option and agreed to conditions.");
     }
 
     public void enterPaymentDetails() {
@@ -243,21 +259,18 @@ public class PolicyDetails {
         frame.selectOption(cardExpMM, "03");
         frame.selectOption(cardExpYY, "2030");
         frame.fill(cardCVV, "737");
-
-        page.keyboard().press("Enter");
 //        frame.click(paymentConfirm);
+        page.keyboard().press("Enter");
 
+        Log.info("Submitted payment details.");
     }
 
     public void createAccount() {
-        page.waitForSelector(newPassword);
         page.fill(newPassword, "January*27");
-
-        page.waitForSelector(agreeCheckbox);
         page.click(agreeCheckbox);
-
-        page.waitForSelector(createAccountButton);
         page.click(createAccountButton);
+
+        Log.info("Created account successfully!");
     }
 
     public void signInToAccount() {

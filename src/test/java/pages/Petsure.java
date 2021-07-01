@@ -4,6 +4,7 @@ import com.microsoft.playwright.ElementHandle;
 import com.microsoft.playwright.Frame;
 import com.microsoft.playwright.Page;
 import org.testng.Assert;
+import utils.Log;
 
 import java.util.Random;
 
@@ -104,65 +105,22 @@ public class Petsure {
         this.page = page;
     }
 
-    public void getVersion() {
-        System.out.println(page.waitForSelector(appVersion).getAttribute("innerText"));
-    }
-
-    public void clickAcceptAllCookiesButton() {
-        page.click(acceptCookies);
-    }
-
     public void clickContinueButton() {
         page.waitForNavigation(() -> {
             page.click(continueButton);
         });
-    }
 
-    public void verifyContinueButtonRemainsHidden() {
-        page.waitForNavigation(() -> {
-            boolean continueButtonDisplayed = page.isVisible(continueButton);
-            Assert.assertFalse(continueButtonDisplayed);
-        });
+        Log.info("Clicked Continue button.");
     }
 
     public void typePetName(String pet) {
         page.fill(petName, pet);
         page.press(petName, "Tab");
-
         page.waitForNavigation(() -> {
             page.click(continueButton);
         });
-    }
 
-    public void verifyPetNameEmpty() {
-        page.isVisible("text=" +NAME_VALIDATION_EMPTY+"'");
-    }
-
-    public void verifyPetNameShort() {
-        page.isVisible("text=" +NAME_VALIDATION_SHORT+"'");
-    }
-
-    public void verifyPetNameInvalid() {
-        page.isVisible("text=" +NAME_VALIDATION_INVALID+"'");
-    }
-
-    public void enterBirthday(String birthday, String birthmonth, String birthyear) {
-        page.fill(dobDay, birthday);
-        page.fill(dobMonth, birthmonth);
-        page.fill(dobYear, birthyear);
-        page.press(dobYear, "Tab");
-
-        page.waitForNavigation(() -> {
-            page.click(continueButton);
-        });
-    }
-
-    public void verifyMaxAge() {
-        page.isVisible("text=" +MAX_AGE+"'");
-    }
-
-    public void verifyMinAge(String pet) {
-        page.isVisible("text=" + pet + MIN_AGE+"'");
+        Log.info("Entered pet name.");
     }
 
     public void selectPetType(String animal) {
@@ -174,10 +132,11 @@ public class Petsure {
                 page.click(petDog);
                 break;
         }
-
         page.waitForNavigation(() -> {
             page.click(continueButton);
         });
+
+        Log.info("Selected type of the pet.");
     }
 
     public void selectPetGender(String gender) {
@@ -189,6 +148,20 @@ public class Petsure {
                 page.click(petFemale);
                 break;
         }
+
+        Log.info("Selected gender of the pet.");
+    }
+
+    public void enterBirthday(String birthday, String birthmonth, String birthyear) {
+        page.fill(dobDay, birthday);
+        page.fill(dobMonth, birthmonth);
+        page.fill(dobYear, birthyear);
+        page.press(dobYear, "Tab");
+        page.waitForNavigation(() -> {
+            page.click(continueButton);
+        });
+
+        Log.info("Entered pet's birthday.");
     }
 
     public void selectBreed(String animal, String type, String breed, String dominant_breed) {
@@ -238,10 +211,11 @@ public class Petsure {
                     break;
             }
         }
-
         page.waitForNavigation(() -> {
             page.click(continueButton);
         });
+
+        Log.info("Selected breed of the pet.");
     }
 
     public void crossBreedNotListed(String breed, String dominant_breed) {
@@ -255,10 +229,11 @@ public class Petsure {
         page.fill(breedCrossSearchBox2, dominant_breed);
         page.click(breedCrossSearchBox2);
         page.click(breedPureSearchList_1 + dominant_breed + breedPureSearchList_2);
-
         page.waitForNavigation(() -> {
             page.click(continueButton);
         });
+
+        Log.info("Selected cross breeds.");
     }
 
     public void mixedBreedNotSure() {
@@ -284,10 +259,11 @@ public class Petsure {
                 page.click(breedMixedWeightOption3);
                 break;
         }
-
         page.waitForNavigation(() -> {
             page.click(continueButton);
         });
+
+        Log.info("Selected mixed breeds.");
     }
 
     public void answerNeuteredOrSpayedQuestion(String neutered_spayed) {
@@ -299,6 +275,8 @@ public class Petsure {
                 page.click(neuteredOrSpayedNo);
                 break;
         }
+
+        Log.info("Answered Neutered or Spayed question.");
     }
 
     public void answerMicrochipQuestion(String microchipped) {
@@ -312,20 +290,22 @@ public class Petsure {
             case "no":
                 page.click(microchippedNo);
                 page.click(continueButton);
-
                 page.waitForNavigation(() -> {
                     page.click(okayGotItButton);
                 });
                 break;
         }
+
+        Log.info("Answered Microchipped question.");
     }
 
     public void costPaidOrDonated(String donation) {
         page.fill(petCost, donation);
-
         page.waitForNavigation(() -> {
             page.click(continueButton);
         });
+
+        Log.info("Entered amount donated or paid.");
     }
 
     public void dentalIllnessCover(String dental_illness) {
@@ -337,10 +317,11 @@ public class Petsure {
                 page.click(dentalIllnessNo);
                 break;
         }
-
         page.waitForNavigation(() -> {
             page.click(continueButton);
         });
+
+        Log.info("Answered Dental Illness cover question.");
     }
 
     public void healthCover(String visited_vet_prescribed_medication, String awaiting_surgery, String animal) {
@@ -409,28 +390,41 @@ public class Petsure {
                 }
             }
         }
-    }
 
-    public void screeningTest() {
-        page.waitForNavigation(() -> {
-        ElementHandle typeCondition = page.querySelector(screeningInput);
-        typeCondition.fill("tick");
-
-        ElementHandle clickSearchButton = page.querySelector(screeningSearch);
-        clickSearchButton.click();
-        });
+        Log.info("Completed medical screening.");
     }
 
     public void agreeToAssumptions() {
         page.click(assumptionsYes);
-
         page.waitForNavigation(() -> {
             page.click(continueButton);
         });
+
+        Log.info("Agreed to assumptions.");
     }
 
     public void disagreeToAssumptions() {
         page.click(assumptionsNo);
+    }
+
+    public void verifyPetNameEmpty() {
+        page.isVisible("text=" +NAME_VALIDATION_EMPTY+"'");
+    }
+
+    public void verifyPetNameShort() {
+        page.isVisible("text=" +NAME_VALIDATION_SHORT+"'");
+    }
+
+    public void verifyPetNameInvalid() {
+        page.isVisible("text=" +NAME_VALIDATION_INVALID+"'");
+    }
+
+    public void verifyMaxAge() {
+        page.isVisible("text=" +MAX_AGE+"'");
+    }
+
+    public void verifyMinAge(String pet) {
+        page.isVisible("text=" + pet + MIN_AGE+"'");
     }
 
 }

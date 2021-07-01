@@ -18,7 +18,7 @@ import java.util.List;
 public class TestPolicyDetails extends BaseClass {
     @DataProvider
     public Object[][] petInfo() throws FileNotFoundException {
-        JsonElement jsonData = new JsonParser().parse(new FileReader("src/test/java/data/pet-common.json"));
+        JsonElement jsonData = new JsonParser().parse(new FileReader("src/test/java/data/pet-min.json"));
         JsonElement dataSet = jsonData.getAsJsonObject().get("petCommon");
         List<DataPOJO> testData = new Gson().fromJson(dataSet, new TypeToken<List<DataPOJO>>() {}.getType());
         Object[][] returnValue = new Object[testData.size()][1];
@@ -74,10 +74,7 @@ public class TestPolicyDetails extends BaseClass {
         int currentMonth = currentdate.getMonthValue() +1;
         String renew_month = Integer.toString(currentMonth);
 
-        policyDetails.selectYesForAnyOtherPets();
         policyDetails.addAlreadyCoveredPetDetails(covered_pet, renew_month, renew_year);
-        policyDetails.submitAlreadyCoveredPets();
-        policyDetails.confirmAlreadyCoveredPetPopup();
     }
 
     @Test(priority=2, dataProvider = "petInfo")
@@ -108,6 +105,7 @@ public class TestPolicyDetails extends BaseClass {
 
         policyDetails.fillOwnerDetails();
         petSure.clickContinueButton();
+        Log.info("Submitted owner details.");
 
         policyDetails.selectVetFree(petInfo.getVetFee());
         policyDetails.selectExcess(petInfo.getExcess());

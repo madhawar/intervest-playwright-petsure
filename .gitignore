@@ -4,5 +4,6 @@
 /test-output/
 .settings/
 /log/
+/log4j2/
 .DS_Store
 .idea

@@ -1,0 +1,24 @@
+{
+  "petCommon": [
+    {
+      "animal": "cat",
+      "name": "nicole",
+      "gender": "male",
+      "dobDay": "24",
+      "dobMonth": "09",
+      "dobYear": "2019",
+      "type": "pedigree",
+      "breed": "Norwegian Forest Cat",
+      "dominant_breed": "Norwegian Forest Cat",
+      "neutered_spayed": "no",
+      "microchipped": "yes",
+      "donation": "10",
+      "dental_illness": "no",
+      "visited_vet_prescribed_medication": "no",
+      "awaiting_surgery": "no",
+      "vet_fee": "10,000",
+      "excess": "100",
+      "bill_share": "10"
+    }
+  ]
+}
