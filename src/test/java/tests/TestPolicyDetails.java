@@ -1,4 +1,4 @@
-package testcases;
+package tests;
 
 import base.BaseClass;
 import com.google.gson.Gson;
@@ -7,7 +7,8 @@ import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import resources.DataPOJO;
+import data.DataPOJO;
+import utils.Log;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -17,7 +18,7 @@ import java.util.List;
 public class TestPolicyDetails extends BaseClass {
     @DataProvider
     public Object[][] petInfo() throws FileNotFoundException {
-        JsonElement jsonData = new JsonParser().parse(new FileReader("src/test/java/resources/pet-common.json"));
+        JsonElement jsonData = new JsonParser().parse(new FileReader("src/test/java/data/pet-common.json"));
         JsonElement dataSet = jsonData.getAsJsonObject().get("petCommon");
         List<DataPOJO> testData = new Gson().fromJson(dataSet, new TypeToken<List<DataPOJO>>() {}.getType());
         Object[][] returnValue = new Object[testData.size()][1];
@@ -30,7 +31,7 @@ public class TestPolicyDetails extends BaseClass {
 
     @DataProvider
     public Object[][] petDog() throws FileNotFoundException {
-        JsonElement jsonData = new JsonParser().parse(new FileReader("src/test/java/resources/pet-common.json"));
+        JsonElement jsonData = new JsonParser().parse(new FileReader("src/test/java/data/pet-common.json"));
         JsonElement dataSet = jsonData.getAsJsonObject().get("petDog");
         List<DataPOJO> testData = new Gson().fromJson(dataSet, new TypeToken<List<DataPOJO>>() {}.getType());
         Object[][] returnValue = new Object[testData.size()][1];
@@ -44,31 +45,24 @@ public class TestPolicyDetails extends BaseClass {
     @Test(priority=1, dataProvider = "petInfo", enabled = false)
     public void addAlreadyCoveredPetDetails(DataPOJO petInfo) {
         petSure.typePetName(petInfo.getName());
-        petSure.clickContinueButton();
 
         petSure.selectPetType(petInfo.getAnimal());
-        petSure.clickContinueButton();
 
         petSure.selectPetGender(petInfo.getGender());
         petSure.enterBirthday(petInfo.getBirthDay(), petInfo.getBirthMonth(), petInfo.getBirthYear());
-        petSure.clickContinueButton();
 
         petSure.selectBreed(petInfo.getAnimal(), petInfo.getType(), petInfo.getBreed(), petInfo.getDominantBreed());
-        petSure.clickContinueButton();
 
         petSure.answerNeuteredOrSpayedQuestion(petInfo.getNeuteredSpayed());
         petSure.answerMicrochipQuestion(petInfo.getMicrochipped());
 
         petSure.costPaidOrDonated(petInfo.getDonation());
-        petSure.clickContinueButton();
 
         petSure.dentalIllnessCover(petInfo.getDentalIllness());
-        petSure.clickContinueButton();
 
         petSure.healthCover(petInfo.getHealthQuestion1(), petInfo.getHealthQuestion2(), petInfo.getAnimal());
 
         petSure.agreeToAssumptions();
-        petSure.clickContinueButton();
 
         LocalDate currentdate = LocalDate.now();
 
@@ -84,46 +78,35 @@ public class TestPolicyDetails extends BaseClass {
         policyDetails.addAlreadyCoveredPetDetails(covered_pet, renew_month, renew_year);
         policyDetails.submitAlreadyCoveredPets();
         policyDetails.confirmAlreadyCoveredPetPopup();
-        petSure.clickContinueButton();
     }
 
     @Test(priority=2, dataProvider = "petInfo")
     public void test(DataPOJO petInfo) {
         petSure.typePetName(petInfo.getName());
-        petSure.clickContinueButton();
 
         petSure.selectPetType(petInfo.getAnimal());
-        petSure.clickContinueButton();
 
         petSure.selectPetGender(petInfo.getGender());
         petSure.enterBirthday(petInfo.getBirthDay(), petInfo.getBirthMonth(), petInfo.getBirthYear());
-        petSure.clickContinueButton();
 
         petSure.selectBreed(petInfo.getAnimal(), petInfo.getType(), petInfo.getBreed(), petInfo.getDominantBreed());
-        petSure.clickContinueButton();
 
         petSure.answerNeuteredOrSpayedQuestion(petInfo.getNeuteredSpayed());
         petSure.answerMicrochipQuestion(petInfo.getMicrochipped());
 
         petSure.costPaidOrDonated(petInfo.getDonation());
-        petSure.clickContinueButton();
 
         petSure.dentalIllnessCover(petInfo.getDentalIllness());
-        petSure.clickContinueButton();
 
         petSure.healthCover(petInfo.getHealthQuestion1(), petInfo.getHealthQuestion2(), petInfo.getAnimal());
 
         petSure.agreeToAssumptions();
-        petSure.clickContinueButton();
 
         policyDetails.selectNoForAnyOtherPets();
-        petSure.clickContinueButton();
 
         policyDetails.selectPolicyStartDate();
-        petSure.clickContinueButton();
 
         policyDetails.fillOwnerDetails();
-        policyDetails.setMarketingPreferences();
         petSure.clickContinueButton();
 
         policyDetails.selectVetFree(petInfo.getVetFee());
@@ -138,9 +121,10 @@ public class TestPolicyDetails extends BaseClass {
         petSure.clickContinueButton();
 
         policyDetails.selectPaymentOption();
-        petSure.clickContinueButton();
+        Log.debug("bwoah");
 
         policyDetails.enterPaymentDetails();
+        policyDetails.createAccount();
     }
 
 }

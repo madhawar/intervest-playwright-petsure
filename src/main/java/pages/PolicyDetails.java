@@ -5,7 +5,8 @@ import com.microsoft.playwright.Frame;
 import com.microsoft.playwright.Page;
 import org.testng.Assert;
 
-import java.util.regex.Pattern;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class PolicyDetails {
     private final Page page;
@@ -75,6 +76,12 @@ public class PolicyDetails {
     private final String paymentBack = "#btnCancel";
     private final String paymentConfirm = "#btnSubmit";
 
+    private final String newPassword = "#password1";
+    private final String agreeCheckbox = "#readAgreement";
+    private final String createAccountButton = "#registerBtn";
+    private final String existingPassword = "#password";
+    private final String signInButton = "#signInBtn";
+
     private final String nextButton = "text=Next";
     private final String continueButton = "text=Continue";
     private final String okGotItButton = "text=Ok, got it";
@@ -100,6 +107,10 @@ public class PolicyDetails {
 
     public void selectNoForAnyOtherPets() {
         page.click(anyOtherPetsNo);
+
+        page.waitForNavigation(() -> {
+            page.click(continueButton);
+        });
     }
 
     public void addAlreadyCoveredPetDetails(String covered_pet, String renew_month, String renew_year) {
@@ -117,36 +128,45 @@ public class PolicyDetails {
         page.waitForNavigation(() -> {
             page.click(petsAlreadyCoveredConfirmPopup);
         });
+
+        page.click(continueButton);
     }
 
     public void selectPolicyStartDate() {
         page.click(policyStartsTomorrow);
+
+        page.waitForNavigation(() -> {
+            page.click(continueButton);
+        });
     }
 
     public void fillOwnerDetails() {
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("uuuuMMddHHmmss");
+        LocalDateTime now = LocalDateTime.now();
+        String email_address = "madhawa_ist+" + dtf.format(now) + "pet@pm.me";
+        System.out.println(email_address);
+
         page.selectOption(ownerTitle, "Mr");
         page.fill(ownerFirstName, "Madhawa");
         page.fill(ownerLastName, "Ratnayake");
         page.fill(ownerBirthDay, "27");
         page.fill(ownerBirthMonth, "05");
         page.fill(ownerBirthYear, "1989");
-        page.fill(ownerEmail, "madhawa_ist@protonmail.com");
+        page.fill(ownerEmail, email_address);
         page.fill(ownerTelephone, "0777837227");
         page.fill(ownerPostcode, "NN47YB");
 
         page.click("text=Staysure Services Ltd Britannia House Rushmills Northampton");
 
+        page.click(labelComms);
+        page.keyboard().press("ArrowDown");
     }
 
     public void setMarketingPreferences() {
-        page.click(labelComms);
-        page.keyboard().press("ArrowDown");
-
-//        page.click(commsEmail);
-//        page.click(commsTelephone);
-//        page.click(commsSMS);
-//        page.click(commsPost);
-
+        page.click(commsEmail);
+        page.click(commsTelephone);
+        page.click(commsSMS);
+        page.click(commsPost);
     }
 
     public void selectVetFree(String vet_fee) {
@@ -208,6 +228,11 @@ public class PolicyDetails {
     public void selectPaymentOption() {
         page.click(payAnnually);
         page.click(agreeToTerms);
+
+        page.waitForNavigation(() -> {
+            page.click(continueButton);
+
+        });
     }
 
     public void enterPaymentDetails() {
@@ -218,7 +243,26 @@ public class PolicyDetails {
         frame.selectOption(cardExpMM, "03");
         frame.selectOption(cardExpYY, "2030");
         frame.fill(cardCVV, "737");
-        frame.click(paymentConfirm);
+
+        page.keyboard().press("Enter");
+//        frame.click(paymentConfirm);
+
+    }
+
+    public void createAccount() {
+        page.waitForSelector(newPassword);
+        page.fill(newPassword, "January*27");
+
+        page.waitForSelector(agreeCheckbox);
+        page.click(agreeCheckbox);
+
+        page.waitForSelector(createAccountButton);
+        page.click(createAccountButton);
+    }
+
+    public void signInToAccount() {
+        page.fill(existingPassword, "January*27");
+        page.click(signInButton);
     }
 
 }

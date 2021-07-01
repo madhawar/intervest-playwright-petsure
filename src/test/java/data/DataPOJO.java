@@ -1,4 +1,4 @@
-package resources;
+package data;
 
 public class DataPOJO {
 //    private String title;

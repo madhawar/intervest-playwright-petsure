@@ -2,7 +2,6 @@ package pages;
 
 import com.microsoft.playwright.ElementHandle;
 import com.microsoft.playwright.Frame;
-import com.microsoft.playwright.JSHandle;
 import com.microsoft.playwright.Page;
 import org.testng.Assert;
 
@@ -129,6 +128,10 @@ public class Petsure {
     public void typePetName(String pet) {
         page.fill(petName, pet);
         page.press(petName, "Tab");
+
+        page.waitForNavigation(() -> {
+            page.click(continueButton);
+        });
     }
 
     public void verifyPetNameEmpty() {
@@ -148,6 +151,10 @@ public class Petsure {
         page.fill(dobMonth, birthmonth);
         page.fill(dobYear, birthyear);
         page.press(dobYear, "Tab");
+
+        page.waitForNavigation(() -> {
+            page.click(continueButton);
+        });
     }
 
     public void verifyMaxAge() {
@@ -167,6 +174,10 @@ public class Petsure {
                 page.click(petDog);
                 break;
         }
+
+        page.waitForNavigation(() -> {
+            page.click(continueButton);
+        });
     }
 
     public void selectPetGender(String gender) {
@@ -227,6 +238,10 @@ public class Petsure {
                     break;
             }
         }
+
+        page.waitForNavigation(() -> {
+            page.click(continueButton);
+        });
     }
 
     public void crossBreedNotListed(String breed, String dominant_breed) {
@@ -240,6 +255,10 @@ public class Petsure {
         page.fill(breedCrossSearchBox2, dominant_breed);
         page.click(breedCrossSearchBox2);
         page.click(breedPureSearchList_1 + dominant_breed + breedPureSearchList_2);
+
+        page.waitForNavigation(() -> {
+            page.click(continueButton);
+        });
     }
 
     public void mixedBreedNotSure() {
@@ -265,6 +284,10 @@ public class Petsure {
                 page.click(breedMixedWeightOption3);
                 break;
         }
+
+        page.waitForNavigation(() -> {
+            page.click(continueButton);
+        });
     }
 
     public void answerNeuteredOrSpayedQuestion(String neutered_spayed) {
@@ -299,6 +322,10 @@ public class Petsure {
 
     public void costPaidOrDonated(String donation) {
         page.fill(petCost, donation);
+
+        page.waitForNavigation(() -> {
+            page.click(continueButton);
+        });
     }
 
     public void dentalIllnessCover(String dental_illness) {
@@ -310,6 +337,10 @@ public class Petsure {
                 page.click(dentalIllnessNo);
                 break;
         }
+
+        page.waitForNavigation(() -> {
+            page.click(continueButton);
+        });
     }
 
     public void healthCover(String visited_vet_prescribed_medication, String awaiting_surgery, String animal) {
@@ -341,6 +372,7 @@ public class Petsure {
                 page.click(healthCheckQuestionNo);
                 page.waitForNavigation(() -> {
                     page.click(continueButton);
+                    System.out.println("Tried different things but still couldn't get this right. Currently unable to add medical screening. Sorry!");
                 });
 
                 ElementHandle frameElement = page.querySelector(iFrameHealth);
@@ -391,6 +423,10 @@ public class Petsure {
 
     public void agreeToAssumptions() {
         page.click(assumptionsYes);
+
+        page.waitForNavigation(() -> {
+            page.click(continueButton);
+        });
     }
 
     public void disagreeToAssumptions() {

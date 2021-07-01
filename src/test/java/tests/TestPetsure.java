@@ -1,4 +1,4 @@
-package testcases;
+package tests;
 
 import base.BaseClass;
 import com.google.gson.Gson;
@@ -7,7 +7,7 @@ import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import resources.DataPOJO;
+import data.DataPOJO;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -17,7 +17,7 @@ import java.util.List;
 public class TestPetsure extends BaseClass {
     @DataProvider
     public Object[][] petInfo() throws FileNotFoundException {
-        JsonElement jsonData = new JsonParser().parse(new FileReader("src/test/java/resources/pet-common.json"));
+        JsonElement jsonData = new JsonParser().parse(new FileReader("src/test/java/data/pet-common.json"));
         JsonElement dataSet = jsonData.getAsJsonObject().get("petCommon");
         List<DataPOJO> testData = new Gson().fromJson(dataSet, new TypeToken<List<DataPOJO>>() {}.getType());
         Object[][] returnValue = new Object[testData.size()][1];
@@ -30,7 +30,7 @@ public class TestPetsure extends BaseClass {
 
     @DataProvider
     public Object[][] petDog() throws FileNotFoundException {
-        JsonElement jsonData = new JsonParser().parse(new FileReader("src/test/java/resources/pet-common.json"));
+        JsonElement jsonData = new JsonParser().parse(new FileReader("src/test/java/data/pet-common.json"));
         JsonElement dataSet = jsonData.getAsJsonObject().get("petDog");
         List<DataPOJO> testData = new Gson().fromJson(dataSet, new TypeToken<List<DataPOJO>>() {}.getType());
         Object[][] returnValue = new Object[testData.size()][1];
@@ -42,41 +42,15 @@ public class TestPetsure extends BaseClass {
     }
 
     @Test(priority=1, dataProvider = "petInfo")
-    public void enterPetNameInvalid(DataPOJO petInfo) {
-        petSure.typePetName("");
-        petSure.verifyPetNameEmpty();
-
-        petSure.typePetName("T");
-        petSure.verifyPetNameShort();
-
-        petSure.typePetName("Togo Gunaratne");
-        petSure.verifyPetNameInvalid();
+    public void enterPetNameValid(DataPOJO petInfo) {
+        petSure.typePetName(petInfo.getName());
     }
 
     @Test(priority=2, dataProvider = "petInfo")
-    public void enterPetNameValid(DataPOJO petInfo) {
-        petSure.typePetName(petInfo.getName());
-        petSure.clickContinueButton();
-    }
-
-    @Test(priority=3, dataProvider = "petInfo")
-    public void enterPetGender(DataPOJO petInfo) {
-        petSure.typePetName(petInfo.getName());
-        petSure.clickContinueButton();
-
-        petSure.selectPetType(petInfo.getAnimal());
-        petSure.clickContinueButton();
-
-        petSure.selectPetGender(petInfo.getGender());
-    }
-
-    @Test(priority=4, dataProvider = "petInfo")
     public void enterPetBirthdayAgeMin(DataPOJO petInfo) {
         petSure.typePetName(petInfo.getName());
-        petSure.clickContinueButton();
 
         petSure.selectPetType(petInfo.getAnimal());
-        petSure.clickContinueButton();
 
         petSure.selectPetGender(petInfo.getGender());
 
@@ -95,13 +69,11 @@ public class TestPetsure extends BaseClass {
         petSure.verifyMinAge(petInfo.getName());
     }
 
-    @Test(priority=5, dataProvider = "petInfo")
+    @Test(priority=3, dataProvider = "petInfo")
     public void enterPetBirthdayAgeMax(DataPOJO petInfo) {
         petSure.typePetName(petInfo.getName());
-        petSure.clickContinueButton();
 
         petSure.selectPetType(petInfo.getAnimal());
-        petSure.clickContinueButton();
 
         petSure.selectPetGender(petInfo.getGender());
 
@@ -114,100 +86,67 @@ public class TestPetsure extends BaseClass {
         petSure.verifyMaxAge();
     }
 
-    @Test(priority=6, dataProvider = "petInfo")
-    public void enterPetBirthday(DataPOJO petInfo) {
+    @Test(priority=4, dataProvider = "petInfo")
+    public void selectPetBreed(DataPOJO petInfo) {
         petSure.typePetName(petInfo.getName());
-        petSure.clickContinueButton();
 
         petSure.selectPetType(petInfo.getAnimal());
-        petSure.clickContinueButton();
 
         petSure.selectPetGender(petInfo.getGender());
         petSure.enterBirthday(petInfo.getBirthDay(), petInfo.getBirthMonth(), petInfo.getBirthYear());
-        petSure.clickContinueButton();
+
+        petSure.selectBreed(petInfo.getAnimal(), petInfo.getType(), petInfo.getBreed(), petInfo.getDominantBreed());
+    }
+
+    @Test(priority=5, dataProvider = "petDog")
+    public void selectDogCrossBreeds(DataPOJO petInfo) {
+        petSure.typePetName(petInfo.getName());
+
+        petSure.selectPetType("dog");
+
+        petSure.selectPetGender(petInfo.getGender());
+        petSure.enterBirthday(petInfo.getBirthDay(), petInfo.getBirthMonth(), petInfo.getBirthYear());
+
+        petSure.crossBreedNotListed(petInfo.getBreed(), petInfo.getDominantBreed());
+    }
+
+    @Test(priority=6, dataProvider = "petDog")
+    public void selectDogMixedBreeds(DataPOJO petInfo) {
+        petSure.typePetName(petInfo.getName());
+
+        petSure.selectPetType("dog");
+
+        petSure.selectPetGender(petInfo.getGender());
+        petSure.enterBirthday(petInfo.getBirthDay(), petInfo.getBirthMonth(), petInfo.getBirthYear());
+
+        petSure.mixedBreedNotSure();
     }
 
     @Test(priority=7, dataProvider = "petInfo")
-    public void selectPetType(DataPOJO petInfo) {
-        petSure.typePetName(petInfo.getName());
-        petSure.clickContinueButton();
-
-        petSure.selectPetType(petInfo.getAnimal());
-        petSure.clickContinueButton();
-
-        petSure.selectPetGender(petInfo.getGender());
-        petSure.enterBirthday(petInfo.getBirthDay(), petInfo.getBirthMonth(), petInfo.getBirthYear());
-        petSure.clickContinueButton();
-
-        petSure.selectBreed(petInfo.getAnimal(), petInfo.getType(), petInfo.getBreed(), petInfo.getDominantBreed());
-        petSure.clickContinueButton();
-    }
-
-    @Test(priority=8, dataProvider = "petDog")
-    public void selectDogCrossBreeds(DataPOJO petInfo) {
-        petSure.typePetName(petInfo.getName());
-        petSure.clickContinueButton();
-
-        petSure.selectPetType("dog");
-        petSure.clickContinueButton();
-
-        petSure.selectPetGender(petInfo.getGender());
-        petSure.enterBirthday(petInfo.getBirthDay(), petInfo.getBirthMonth(), petInfo.getBirthYear());
-        petSure.clickContinueButton();
-
-        petSure.crossBreedNotListed(petInfo.getBreed(), petInfo.getDominantBreed());
-        petSure.clickContinueButton();
-    }
-
-    @Test(priority=9, dataProvider = "petDog")
-    public void selectDogMixedBreeds(DataPOJO petInfo) {
-        petSure.typePetName(petInfo.getName());
-        petSure.clickContinueButton();
-
-        petSure.selectPetType("dog");
-        petSure.clickContinueButton();
-
-        petSure.selectPetGender(petInfo.getGender());
-        petSure.enterBirthday(petInfo.getBirthDay(), petInfo.getBirthMonth(), petInfo.getBirthYear());
-        petSure.clickContinueButton();
-
-        petSure.mixedBreedNotSure();
-        petSure.clickContinueButton();
-    }
-
-    @Test(priority=10, dataProvider = "petInfo")
     public void popupWhenNotMicrochipped(DataPOJO petInfo) {
         petSure.typePetName(petInfo.getName());
-        petSure.clickContinueButton();
 
         petSure.selectPetType(petInfo.getAnimal());
-        petSure.clickContinueButton();
 
         petSure.selectPetGender(petInfo.getGender());
         petSure.enterBirthday(petInfo.getBirthDay(), petInfo.getBirthMonth(), petInfo.getBirthYear());
-        petSure.clickContinueButton();
 
         petSure.selectBreed(petInfo.getAnimal(), petInfo.getType(), petInfo.getBreed(), petInfo.getDominantBreed());
-        petSure.clickContinueButton();
 
         petSure.answerNeuteredOrSpayedQuestion(petInfo.getNeuteredSpayed());
         petSure.answerMicrochipQuestion("no");
     }
 
-    @Test(priority=11, dataProvider = "petInfo", enabled = false)
+    @Test(priority=8, dataProvider = "petInfo", enabled = false)
     public void petCostValidations(DataPOJO petInfo) {
         petSure.typePetName(petInfo.getName());
-        petSure.clickContinueButton();
 
         petSure.selectPetType(petInfo.getAnimal());
-        petSure.clickContinueButton();
 
         petSure.selectPetGender(petInfo.getGender());
         petSure.enterBirthday(petInfo.getBirthDay(), petInfo.getBirthMonth(), petInfo.getBirthYear());
-        petSure.clickContinueButton();
 
         petSure.selectBreed(petInfo.getAnimal(), petInfo.getType(), petInfo.getBreed(), petInfo.getDominantBreed());
-        petSure.clickContinueButton();
 
         petSure.answerNeuteredOrSpayedQuestion(petInfo.getNeuteredSpayed());
         petSure.answerMicrochipQuestion(petInfo.getMicrochipped());
@@ -216,34 +155,27 @@ public class TestPetsure extends BaseClass {
         petSure.verifyContinueButtonRemainsHidden();
     }
 
-    @Test(priority=12, dataProvider = "petInfo")
+    @Test(priority=9, dataProvider = "petInfo")
     public void petMedicalConditions(DataPOJO petInfo) {
         petSure.typePetName(petInfo.getName());
-        petSure.clickContinueButton();
 
         petSure.selectPetType(petInfo.getAnimal());
-        petSure.clickContinueButton();
 
         petSure.selectPetGender(petInfo.getGender());
         petSure.enterBirthday(petInfo.getBirthDay(), petInfo.getBirthMonth(), petInfo.getBirthYear());
-        petSure.clickContinueButton();
 
         petSure.selectBreed(petInfo.getAnimal(), petInfo.getType(), petInfo.getBreed(), petInfo.getDominantBreed());
-        petSure.clickContinueButton();
 
         petSure.answerNeuteredOrSpayedQuestion(petInfo.getNeuteredSpayed());
         petSure.answerMicrochipQuestion(petInfo.getMicrochipped());
 
         petSure.costPaidOrDonated(petInfo.getDonation());
-        petSure.clickContinueButton();
 
         petSure.dentalIllnessCover(petInfo.getDentalIllness());
-        petSure.clickContinueButton();
 
         petSure.healthCover(petInfo.getHealthQuestion1(), petInfo.getHealthQuestion2(), petInfo.getAnimal());
 
         petSure.agreeToAssumptions();
-        petSure.clickContinueButton();
     }
 
 }
